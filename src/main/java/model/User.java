@@ -9,9 +9,11 @@ package model;
  * @author aglalrizal
  */
 import java.util.Scanner;
+import java.util.UUID;
+import utils.UserDAO;
 
 public class User {
-    protected String userId;
+    protected UUID idUser;
     protected String username;
     protected String nama;
     protected String email;
@@ -19,9 +21,10 @@ public class User {
     protected String password;
     protected String role;
     private String deskripsi;
-    public static int idIndex = 0;
+//    private int idIndex;
     public User() {
-        setUserId();
+        UUID uuid = UUID.randomUUID();
+        setIdUser(uuid);
         Scanner scanner = new Scanner(System.in);
         System.out.println("Username: ");
         this.username = scanner.nextLine();
@@ -35,7 +38,8 @@ public class User {
         this.password = scanner.nextLine();
     }
     public User(String nama, String username, String email, String noHp, String password) {
-        setUserId();
+        UUID uuid = UUID.randomUUID();
+        setIdUser(uuid);
         this.nama = nama;
         this.username = username;
         this.email = email;
@@ -44,7 +48,8 @@ public class User {
     }
     
     public User(String nama, String username, String email, String noHp, String password, String deskripsi) {
-        setUserId();
+        UUID uuid = UUID.randomUUID();
+        setIdUser(uuid);
         this.nama = nama;
         this.username = username;
         this.email = email;
@@ -53,8 +58,8 @@ public class User {
         this.deskripsi = deskripsi;
     }
     
-    public String getUserId() {
-        return userId;
+    public UUID getIdUser() {
+        return idUser;
     }
 
     public String getUsername() {
@@ -80,16 +85,19 @@ public class User {
         return role;
     }
 
-    public void setUserId(){
-        idIndex++;
-        this.userId = "lflk"+idIndex;
-    }
+//    public void setUserId(){
+//        idIndex++;
+//        this.idUser = idIndex;
+//    }
     @Override
     public String toString() {
-        return "UserId: "+getUserId()+ "\n" +
+        return "UserId: "+getIdUser()+ "\n" +
                 "Nama: "+ getNama()+ "\n" +
                 "Email: "+getEmail()+ "\n" +
-                "No hp: "+getNoHp()+"\n";
+                "No hp: "+getNoHp()+"\n"+
+                "\nPassword: "+getPassword()+
+                "\nDeskripsi: "+getDeskripsi()+
+                "\nRole: "+getRole();
     }
 
     public String getDeskripsi() {
@@ -118,5 +126,13 @@ public class User {
 
     public void setDeskripsi(String deskripsi) {
         this.deskripsi = deskripsi;
+    }
+    
+//    public void setidIndex(int x){
+//        this.idUser = x + 1;
+//    }
+
+    private void setIdUser(UUID idUser) {
+        this.idUser = idUser;
     }
 }

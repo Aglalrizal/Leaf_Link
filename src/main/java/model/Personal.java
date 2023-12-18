@@ -28,7 +28,7 @@ public class Personal extends User {
 
     }
     public String toString() {
-        return "UserId: "+getUserId()+ "\n" +
+        return "UserId: "+getIdUser()+ "\n" +
                 "Nama: "+ getNama()+ "\n" +
                 "Email: "+getEmail()+ "\n" +
                 "No hp: "+getNoHp();

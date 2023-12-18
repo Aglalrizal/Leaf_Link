@@ -2,7 +2,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  */
 
-package id.psti.leaf_link;
 import model.Organisasi;
 import model.User;
 import model.Personal;
@@ -11,7 +10,7 @@ import utils.UserDAO;
  *
  * @author rizal
  */
-public class Leaf_link {
+public class Main {
     public static void main(String[] args) {
         System.out.println("Hello World!");
 //        Personal p1 = new Personal("Leaflink", "leaflink", "leaflink@upi.edu", "0812345678", "leaflink");

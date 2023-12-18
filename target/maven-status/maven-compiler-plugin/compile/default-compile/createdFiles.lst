@@ -1,1 +1,12 @@
+model\Personal.class
+Main.class
 id\psti\leaf_link\Leaf_link.class
+model\Artikel.class
+model\Organisasi.class
+utils\OrganisasiDAO.class
+utils\UserDAO.class
+utils\BaseDAO.class
+model\Kampanye.class
+utils\KampanyeDAO.class
+model\User.class
+model\Admin.class

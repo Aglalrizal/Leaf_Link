@@ -7,9 +7,10 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.UUID;
 
 public class Kampanye {
-    private String idKampanye;
+    private UUID idKampanye;
     private String nama;
     private String deskripsi;
     private List<Personal>volunteer = new ArrayList<>();
@@ -17,10 +18,11 @@ public class Kampanye {
     private String lokasi;
     private int targetPendanaan;
     private int sumbangan;
-    public static int indexKampanye = 0;
+    private Organisasi organisasi;
     public Kampanye(){
         Scanner scanner = new Scanner(System.in);
-        setIdKampanye();
+        UUID uuid = UUID.randomUUID();
+        setIdKampanye(uuid);
         System.out.println("Nama: ");
         this.nama = scanner.nextLine();
         System.out.println("Lokasi: ");
@@ -32,23 +34,24 @@ public class Kampanye {
         System.out.println("Jumlah Volunteer");
         this.jumlahVolunteer = scanner.nextInt();
     }
-    public Kampanye(String nama, String lokasi, String deskripsi, int targetPendanaan, int jumlahVolunteer){
-        setIdKampanye();
+    public Kampanye(String nama, String lokasi, String deskripsi, int targetPendanaan, int jumlahVolunteer, Organisasi organisasi){
+        UUID uuid = UUID.randomUUID();
+        setIdKampanye(uuid);
         this.nama = nama;
         this.lokasi = lokasi;
         this.deskripsi = deskripsi;
         this.targetPendanaan = targetPendanaan;
         this.jumlahVolunteer = jumlahVolunteer;
+        this.organisasi = organisasi;
     }
-    public void setIdKampanye(){
-        indexKampanye++;
-        this.idKampanye = "lf-cmp-"+indexKampanye;
+    public UUID setIdKampanye(UUID idKampanye){
+        return this.idKampanye = idKampanye;
     }
     public String getDeskripsi() {
         return deskripsi;
     }
 
-    public String getIdKampanye() {
+    public UUID getIdKampanye() {
         return idKampanye;
     }
 

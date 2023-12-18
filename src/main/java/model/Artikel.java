@@ -5,40 +5,43 @@
 package model;
 
 import java.util.Scanner;
+import java.util.UUID;
 
 /**
  *
  * @author aglalrizal
  */
 public class Artikel {
-    private String idArtikel;
+    private UUID idArtikel;
     private String judul;
-    private String konten;
+    private String isi;
     private Organisasi organisasi;
     public static int indexArtikel = 0;
 
     public Artikel(Organisasi organisasi) {
         Scanner scanner = new Scanner(System.in);
-        setIdArtikel();
+        setIdArtikel(idArtikel);
         System.out.println("Judul: ");
         this.judul = scanner.nextLine();
         System.out.println("Judul: ");
-        this.konten = scanner.nextLine();;
+        this.isi = scanner.nextLine();;
         this.organisasi = organisasi;
     }
     public Artikel(Organisasi organisasi, String judul, String konten) {
-        setIdArtikel();
+        UUID uuid = UUID.randomUUID();
+        setIdArtikel(uuid);
         this.judul = judul;
-        this.konten = konten;
+        this.isi = konten;
         this.organisasi = organisasi;
     }
 
     public Artikel(Organisasi organisasi, String judul) {
-        setIdArtikel();
+        UUID uuid = UUID.randomUUID();
+        setIdArtikel(uuid);
         this.judul = judul;
         this.organisasi = organisasi;
     }
-    public String getIdArtikel() {
+    public UUID getIdArtikel() {
         return idArtikel;
     }
 
@@ -46,22 +49,21 @@ public class Artikel {
         return judul;
     }
 
-    public String getKonten() {
-        return konten;
+    public String getIsi() {
+        return isi;
     }
 
     public Organisasi getAuthor(){
         return organisasi;
     }
 
-    public void setKonten(String konten) {
-        this.konten = konten;
+    public void setIsi(String isi) {
+        this.isi = isi;
     }
 
 
-    private void setIdArtikel(){
-        indexArtikel++;
-        this.idArtikel="artikel"+indexArtikel;
+    private UUID setIdArtikel(UUID idArtikel){
+        return this.idArtikel=idArtikel;
     }
 
     @Override
@@ -69,6 +71,6 @@ public class Artikel {
         return  "UserId: "+getIdArtikel()+ "\n" +
                 "Author: "+getAuthor() + "\n" +
                 "Judul: "+getJudul()+ "\n" +
-                "Konten: "+getKonten()+"\n";
+                "Konten: "+getIsi()+"\n";
     }
 }
