@@ -9,7 +9,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
-        <exec.mainClass>id.psti.leaf_link.Leaf_link</exec.mainClass>
+        <exec.mainClass>main.Main</exec.mainClass>
     <javafx.version>21</javafx.version>
     	<javafx.maven.plugin.version>0.0.8</javafx.maven.plugin.version>
 </properties>

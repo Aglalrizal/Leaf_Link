@@ -16,9 +16,9 @@ public class Kampanye {
     private List<Personal>volunteer = new ArrayList<>();
     private int jumlahVolunteer;
     private String lokasi;
-    private int targetPendanaan;
-    private int sumbangan;
-    private Organisasi organisasi;
+    private long targetPendanaan;
+    private long sumbangan;
+    private Organisasi penyelenggara;
     public Kampanye(){
         Scanner scanner = new Scanner(System.in);
         UUID uuid = UUID.randomUUID();
@@ -34,7 +34,29 @@ public class Kampanye {
         System.out.println("Jumlah Volunteer");
         this.jumlahVolunteer = scanner.nextInt();
     }
-    public Kampanye(String nama, String lokasi, String deskripsi, int targetPendanaan, int jumlahVolunteer, Organisasi organisasi){
+    
+    public Kampanye(UUID uuid, String nama, String lokasi, String deskripsi, long targetPendanaan, long sumbangan, int jumlahVolunteer, Organisasi penyelenggara){
+        setIdKampanye(uuid);
+        this.nama = nama;
+        this.lokasi = lokasi;
+        this.deskripsi = deskripsi;
+        this.targetPendanaan = targetPendanaan;
+        this.sumbangan = sumbangan;
+        this.jumlahVolunteer = jumlahVolunteer;
+        this.penyelenggara = penyelenggara;
+    }
+    
+    public Kampanye(UUID uuid, String nama, String lokasi, String deskripsi, long targetPendanaan, int jumlahVolunteer, Organisasi penyelenggara){
+        setIdKampanye(uuid);
+        this.nama = nama;
+        this.lokasi = lokasi;
+        this.deskripsi = deskripsi;
+        this.targetPendanaan = targetPendanaan;
+        this.jumlahVolunteer = jumlahVolunteer;
+        this.penyelenggara = penyelenggara;
+    }
+    
+    public Kampanye(String nama, String lokasi, String deskripsi, long targetPendanaan, int jumlahVolunteer, Organisasi penyelenggara){
         UUID uuid = UUID.randomUUID();
         setIdKampanye(uuid);
         this.nama = nama;
@@ -42,11 +64,24 @@ public class Kampanye {
         this.deskripsi = deskripsi;
         this.targetPendanaan = targetPendanaan;
         this.jumlahVolunteer = jumlahVolunteer;
-        this.organisasi = organisasi;
+        this.penyelenggara = penyelenggara;
     }
+
+    public Kampanye(String nama, String deskripsi, int jumlahVolunteer, String lokasi, long targetPendanaan) {
+        UUID uuid = UUID.randomUUID();
+        setIdKampanye(uuid);
+        this.nama = nama;
+        this.deskripsi = deskripsi;
+        this.jumlahVolunteer = jumlahVolunteer;
+        this.lokasi = lokasi;
+        this.targetPendanaan = targetPendanaan;
+        this.sumbangan = sumbangan;
+    }
+    
     public UUID setIdKampanye(UUID idKampanye){
         return this.idKampanye = idKampanye;
     }
+    
     public String getDeskripsi() {
         return deskripsi;
     }
@@ -54,7 +89,11 @@ public class Kampanye {
     public UUID getIdKampanye() {
         return idKampanye;
     }
-
+    
+    public void donasi(long jml_sumbangan){
+        this.sumbangan += jml_sumbangan;
+    }
+    
     public String getNama() {
         return nama;
     }
@@ -71,26 +110,36 @@ public class Kampanye {
         return lokasi;
     }
 
-    public int getTargetPendanaan() {
+    public long getTargetPendanaan() {
         return targetPendanaan;
     }
 
-    public int getSumbangan() {
+    public long getSumbangan() {
         return sumbangan;
     }
 
     public void addVolunteer(Personal person){
         volunteer.add(person);
     }
-    public void sumbangan(int sumbangan){
+
+    public Organisasi getPenyelenggara() {
+        return penyelenggara;
+    }
+
+    public void setPenyelenggara(Organisasi penyelenggara) {
+        this.penyelenggara = penyelenggara;
+    }
+    public void setSumbangan(long sumbangan){
         this.sumbangan = sumbangan;
     }
+    @Override
     public String toString(){
         return "Id Kampanye: "+getIdKampanye()+
+                "\nPenyenggara: "+getPenyelenggara().getNama()+
                 "\nNama: "+getNama()+
                 "\nLokasi: "+getLokasi()+
                 "\nTarget Pendanaan: "+getTargetPendanaan()+
                 "\nUang Terkumpul: "+getSumbangan()+
-                "\nDeskripsi: "+getDeskripsi();
+                "\nDeskripsi: "+getDeskripsi()+"\n";
     }
 }

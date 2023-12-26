@@ -15,32 +15,47 @@ public class Artikel {
     private UUID idArtikel;
     private String judul;
     private String isi;
-    private Organisasi organisasi;
-    public static int indexArtikel = 0;
+    private Organisasi author;
+    
+    public Artikel(UUID uuid, String judul, String konten, Organisasi author) {
+        setIdArtikel(uuid);
+        this.judul = judul;
+        this.isi = konten;
+        this.author = author;
+    }
+    
+    public Artikel(String judul, String konten) {
+        UUID uuid = UUID.randomUUID();
+        setIdArtikel(uuid);
+        this.judul = judul;
+        this.isi = konten;
+    }
 
-    public Artikel(Organisasi organisasi) {
+    public Artikel(Organisasi author) {
         Scanner scanner = new Scanner(System.in);
         setIdArtikel(idArtikel);
         System.out.println("Judul: ");
         this.judul = scanner.nextLine();
         System.out.println("Judul: ");
         this.isi = scanner.nextLine();;
-        this.organisasi = organisasi;
+        this.author = author;
     }
-    public Artikel(Organisasi organisasi, String judul, String konten) {
+    
+    public Artikel(Organisasi author, String judul, String konten) {
         UUID uuid = UUID.randomUUID();
         setIdArtikel(uuid);
         this.judul = judul;
         this.isi = konten;
-        this.organisasi = organisasi;
+        this.author = author;
     }
 
-    public Artikel(Organisasi organisasi, String judul) {
+    public Artikel(Organisasi author, String judul) {
         UUID uuid = UUID.randomUUID();
         setIdArtikel(uuid);
         this.judul = judul;
-        this.organisasi = organisasi;
+        this.author = author;
     }
+    
     public UUID getIdArtikel() {
         return idArtikel;
     }
@@ -53,8 +68,17 @@ public class Artikel {
         return isi;
     }
 
+    public void setAuthor(Organisasi author) {
+        this.author = author;
+    }
+
+    public void setJudul(String judul) {
+        this.judul = judul;
+    }
+
+    
     public Organisasi getAuthor(){
-        return organisasi;
+        return author;
     }
 
     public void setIsi(String isi) {
@@ -68,8 +92,8 @@ public class Artikel {
 
     @Override
     public String toString(){
-        return  "UserId: "+getIdArtikel()+ "\n" +
-                "Author: "+getAuthor() + "\n" +
+        return  "ArtikelId: "+getIdArtikel()+ "\n" +
+                "Author: "+getAuthor().nama + "\n" +
                 "Judul: "+getJudul()+ "\n" +
                 "Konten: "+getIsi()+"\n";
     }

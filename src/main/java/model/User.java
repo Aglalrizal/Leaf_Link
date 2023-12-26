@@ -20,7 +20,7 @@ public class User {
     protected String noHp;
     protected String password;
     protected String role;
-    private String deskripsi;
+    protected String alamat;
 //    private int idIndex;
     public User() {
         UUID uuid = UUID.randomUUID();
@@ -37,25 +37,29 @@ public class User {
         System.out.println("Password: ");
         this.password = scanner.nextLine();
     }
-    public User(String nama, String username, String email, String noHp, String password) {
+    public User(String nama, String username, String email, String noHp, String alamat, String password) {
         UUID uuid = UUID.randomUUID();
         setIdUser(uuid);
         this.nama = nama;
         this.username = username;
         this.email = email;
         this.noHp = noHp;
+        this.alamat = alamat;
         this.password = password;
     }
     
-    public User(String nama, String username, String email, String noHp, String password, String deskripsi) {
-        UUID uuid = UUID.randomUUID();
+        public User(UUID uuid, String nama, String username, String email, String noHp, String alamat, String password) {
         setIdUser(uuid);
         this.nama = nama;
         this.username = username;
         this.email = email;
         this.noHp = noHp;
+        this.alamat = alamat;
         this.password = password;
-        this.deskripsi = deskripsi;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
     
     public UUID getIdUser() {
@@ -84,25 +88,17 @@ public class User {
     public String getRole() {
         return role;
     }
-
-//    public void setUserId(){
-//        idIndex++;
-//        this.idUser = idIndex;
-//    }
+    
     @Override
     public String toString() {
         return "UserId: "+getIdUser()+ "\n" +
                 "Nama: "+ getNama()+ "\n" +
                 "Email: "+getEmail()+ "\n" +
-                "No hp: "+getNoHp()+"\n"+
+                "Nomor Telepon: "+getNoHp()+
                 "\nPassword: "+getPassword()+
-                "\nDeskripsi: "+getDeskripsi()+
-                "\nRole: "+getRole();
+                "\nRole: "+getRole()+ "\n";
     }
 
-    public String getDeskripsi() {
-        return deskripsi;
-    }
 
     public void setUsername(String username) {
         this.username = username;
@@ -124,15 +120,16 @@ public class User {
         this.password = password;
     }
 
-    public void setDeskripsi(String deskripsi) {
-        this.deskripsi = deskripsi;
-    }
-    
-//    public void setidIndex(int x){
-//        this.idUser = x + 1;
-//    }
-
     private void setIdUser(UUID idUser) {
         this.idUser = idUser;
     }
+
+    public String getAlamat() {
+        return alamat;
+    }
+
+    public void setAlamat(String alamat) {
+        this.alamat = alamat;
+    }
+    
 }
