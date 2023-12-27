@@ -64,5 +64,9 @@ public class Donasi {
         this.person = person;
     }
     
-    
+    @Override
+    public String toString(){
+        return  "Nama Kampanye: "+ getKampanye().getNama()+
+                "\nJumlah Donasi: Rp."+ getJml_sumbangan()+"\n";
+    }
 }

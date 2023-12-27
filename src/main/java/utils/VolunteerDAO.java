@@ -11,56 +11,54 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.UUID;
-import model.Artikel;
-import model.Organisasi;
+import model.Personal;
+import model.Volunteer;
 
 /**
  *
  * @author aglalrizal
  */
-public class ArtikelDAO {
-    
+public class VolunteerDAO {
     private static Connection con;
     private static Statement stmt;
     private static String query;
     
-    public static void saveArtikel(Organisasi organisasi, Artikel artikel){
+    public static void saveVolunteer(Volunteer v){
         try{
             con = BaseDAO.getCon();
-            organisasi.addArtikel(artikel);
-            query = "INSERT INTO Artikel VALUES ('%s', '%s', '%s', '%s')";
+           //d.getKampanye().donasi(d.getJml_sumbangan());
+            v.getRelawan().addRiwayatVolunteer(v.getKampanye());
+            v.getKampanye().addVolunteer(v.getRelawan());
+            query = "INSERT INTO volunteer VALUES ('%s', '%s', '%s')";
             query = String.format(
                     query,
-                    artikel.getIdArtikel(),
-                    artikel.getJudul(),
-                    artikel.getIsi(),
-                    organisasi.getIdUser());
+                    v.getIdVolunteer(),
+                    v.getRelawan().getIdUser(),
+                    v.getKampanye().getIdKampanye());
             stmt = con.prepareStatement(query);
             stmt.executeUpdate(query);
-            System.out.println("Berhasil menambahkan Artikel!");
-        }catch(SQLException ex){
-            System.err.print("Error inserting data: "+ ex.getMessage());
-            System.exit(1);
+            System.out.println("Yeay, Berhasil bergabung!");
+        }catch (SQLException e) {
+            e.printStackTrace();
         } finally {
             BaseDAO.closeCon(con);
         }
     }
     
-    public static ArrayList<Artikel> getAllbyOrganisasi(Organisasi u) {
-        ArrayList<Artikel> res = new ArrayList<>();
+    public static ArrayList<Volunteer> getAllbyUser(Personal u) {
+        ArrayList<Volunteer> res = new ArrayList<>();
         try {
             con = BaseDAO.getCon();
-            query = "select * from artikel "
+            query = "select * from volunteer "
                     + "where idUser = '%s'";
 
             query = String.format(query, u.getIdUser().toString());
             stmt = con.prepareStatement(query);
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
-                Artikel a = new Artikel(UUID.fromString(rs.getString("idArtikel")),
-                            rs.getString("judul"),
-                            rs.getString("isi"),
-                            u);
+                Volunteer a = new Volunteer(UUID.fromString(rs.getString("idVolunteer")),
+                            PersonalDAO.searchByUid(rs.getString("idUser")),
+                            KampanyeDAO.getKampanyeById(rs.getString("idKampanye")));
                 res.add(a);
             }
         } catch (SQLException e) {
@@ -71,20 +69,19 @@ public class ArtikelDAO {
         return res;
     }
     
-    public static ArrayList<Artikel> getAll() {
-        ArrayList<Artikel> all = new ArrayList<>();
+    public static ArrayList<Volunteer> getAll() {
+        ArrayList<Volunteer> all = new ArrayList<>();
         try {
             con = BaseDAO.getCon();
-            query = "select * from artikel ";
+            query = "select * from volunteer";
 
             query = String.format(query);
             stmt = con.prepareStatement(query);
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
-                Artikel a = new Artikel(UUID.fromString(rs.getString("idArtikel")),
-                            rs.getString("judul"),
-                            rs.getString("isi"),
-                            OrganisasiDAO.searchByUid(rs.getString("idUser")));
+                Volunteer a = new Volunteer(UUID.fromString(rs.getString("idVolunteer")),
+                            PersonalDAO.searchByUid(rs.getString("idUser")),
+                            KampanyeDAO.getKampanyeById(rs.getString("idKampanye")));
                 all.add(a);
             }
         } catch (SQLException e) {
@@ -93,7 +90,6 @@ public class ArtikelDAO {
             BaseDAO.closeCon(con);
         }
         return all;
-    }
-    
-    //pr get 1 data and delete artikel
+    }            
+
 }

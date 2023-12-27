@@ -11,7 +11,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.UUID;
 import model.Personal;
-import model.User;
 
 /**
  *
@@ -19,8 +18,8 @@ import model.User;
  */
 public class PersonalDAO {
      private static Connection con;
-    private static Statement stmt;
-    private static String query;
+     private static Statement stmt;
+     private static String query;
     
     public static void registerPersonal(Personal user) {
         try {
@@ -54,7 +53,7 @@ public class PersonalDAO {
                     user.getPassword());
             stmt = con.prepareStatement(query);
             stmt.executeUpdate(query);
-//            stmt.executeUpdate(query);
+            //stmt.executeUpdate(query);
             System.out.println("Registrasi Berhasil!");
         }catch(SQLException ex){
             System.err.print("Registrasi gagal: "+ ex.getMessage());
@@ -62,6 +61,29 @@ public class PersonalDAO {
         }   finally {
             BaseDAO.closeCon(con);
         }
+    }
+    public static Personal searchByUid(String idUser) {
+        Personal u = null;
+        try {
+            con = BaseDAO.getCon();
+            String query = "select * from personal where idUser = '%s'";
+            query = String.format(query, idUser);
+
+            stmt = con.prepareStatement(query);
+            ResultSet rsUser = stmt.executeQuery(query);
+            //Personal(UUID idUser, String nama, String username, String email, String noHp, String alamat, String password, String pekerjaan, String tanggalLahir)
+            if (rsUser.next()) {
+                    u = new Personal(UUID.fromString(rsUser.getString("idUser")), rsUser.getString("nama"), 
+                    rsUser.getString("username"), rsUser.getString("email"), rsUser.getString("noHp"), 
+                    rsUser.getString("alamat"), rsUser.getString("password"), rsUser.getString("pekerjaan"),
+                    rsUser.getString("tanggal_lahir"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            BaseDAO.closeCon(con);
+        }
+        return u;
     }
 //        public static User validatePersonal(String email, String password) {
 //        User u = null;

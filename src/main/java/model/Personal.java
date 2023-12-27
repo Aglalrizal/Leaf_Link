@@ -10,18 +10,22 @@ package model;
  */
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.UUID;
 import utils.DonasiDAO;
+import utils.VolunteerDAO;
 
 public class Personal extends User {
     private String pekerjaan;
 
-    private ArrayList<Kampanye> riwayatKampanye = new ArrayList<>();
+    private ArrayList<Kampanye> riwayatVolunteer = new ArrayList<>();
     private ArrayList<Donasi> riwayatDonasi = new ArrayList<>();
     private String tanggalLahir;
+    
     public Personal(){
         super();
         this.role = "Personal";
     }
+    
     public Personal(String nama, String username, String email, String noHp, String alamat, String password, String pekerjaan, String tanggalLahir){
         super(nama, username, email, noHp, alamat, password);
         this.role = "Personal";
@@ -29,11 +33,13 @@ public class Personal extends User {
         this.tanggalLahir = tanggalLahir;
     }
     
-    public void donasi(long jml_sumbangan, Kampanye k){
-        Donasi d = new Donasi(k, this, jml_sumbangan);
-        DonasiDAO.saveDonasi(d);
+    public Personal(UUID idUser, String nama, String username, String email, String noHp, String alamat, String password, String pekerjaan, String tanggalLahir){
+        super(idUser,nama, username, email, noHp, alamat, password);
+        this.role = "Personal";
+        this.pekerjaan = pekerjaan;
+        this.tanggalLahir = tanggalLahir;
     }
-    
+     
     public String getPekerjaan() {
         return pekerjaan;
     }
@@ -41,24 +47,36 @@ public class Personal extends User {
     public void setPekerjaan(String pekerjaan) {
         this.pekerjaan = pekerjaan;
     }
-
-    public ArrayList<Kampanye> getRiwayatKampanye() {
-        return riwayatKampanye;
+    
+    public void volunteer(Kampanye k){
+        Volunteer v = new Volunteer(this, k);
+        VolunteerDAO.saveVolunteer(v);
+    }
+    
+    public ArrayList<Kampanye> getRiwayatVolunteer() {
+        return riwayatVolunteer;
     }
 
-    public void setRiwayatKampanye(ArrayList<Kampanye> riwayatKampanye) {
-        this.riwayatKampanye = riwayatKampanye;
+    public void setRiwayatVolunteer(ArrayList<Kampanye> riwayatVolunteer) {
+        this.riwayatVolunteer = riwayatVolunteer;
     }
-    public void addRiwayatKampanye(Kampanye kampanye){
-        this.riwayatKampanye.add(kampanye);
+    public void addRiwayatVolunteer(Kampanye kampanye){
+        this.riwayatVolunteer.add(kampanye);
     }
     
     public void addRiwayatDonasi(Donasi donasi){
         this.riwayatDonasi.add(donasi);
     }
     
-    public void showRiwayatKampanye(){
-        
+    public void showRiwayatVolunteer(){
+        for(Kampanye k : this.getRiwayatVolunteer()){
+            System.out.println("Nama Kampanye: " + k.getNama());
+        }
+    }
+    
+    public void donasi(long jml_sumbangan, Kampanye k){
+        Donasi d = new Donasi(k, this, jml_sumbangan);
+        DonasiDAO.saveDonasi(d);
     }
 
     public ArrayList<Donasi> getRiwayatDonasi() {
@@ -68,7 +86,13 @@ public class Personal extends User {
     public void setRiwayatDonasi(ArrayList<Donasi> riwayatDonasi) {
         this.riwayatDonasi = riwayatDonasi;
     }
-        
+    
+    public void showRiwayatDonasi(){
+        for(Donasi d : this.riwayatDonasi){
+            System.out.println(d.toString());
+        }
+    }
+    
     public String getTanggalLahir() {
         return tanggalLahir;
     }

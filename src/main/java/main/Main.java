@@ -8,18 +8,14 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-import java.util.Scanner;
 import model.Artikel;
 import model.Kampanye;
 import model.Organisasi;
-import model.User;
 import model.Personal;
 import utils.ArtikelDAO;
 import utils.KampanyeDAO;
 import utils.OrganisasiDAO;
 import utils.PersonalDAO;
-import utils.UserDAO;
 /**
  *
  * @author rizal
@@ -130,13 +126,19 @@ public class Main {
         p1.donasi(200004, k1);
         p1.donasi(200005, k4);
         
+        //user p1 mendaftar volunteer
+        p1.volunteer(k4);
+        p1.volunteer(k5);
+        p1.volunteer(k1);
+        p1.volunteer(k2);
+        
         //biar ada jarak aja si
         System.out.println("");
         
         //judul
-        System.out.println("=======================================================");
-        System.out.println("================Kampanye setelah user p1 donasi==================");
-        System.out.println("=======================================================");
+        System.out.println("======================================================================================");
+        System.out.println("================Kampanye setelah user p1 donasi dan daftar volunteer==================");
+        System.out.println("======================================================================================");
         
         //biar ada jarak aja si
         System.out.println("");
@@ -170,5 +172,19 @@ public class Main {
         System.out.println("===================================================");
         o2.displayArtikel();
         System.out.println("===================================================");
+        
+        
+        
+        //Menampilkan riwayat donasi user p1
+        System.out.println("=======================================================");
+        System.out.println("================Riwayat Donasi user p1==================");
+        System.out.println("=======================================================");
+        p1.showRiwayatDonasi();
+        
+        //Menampilkan riwayat volunteer
+        System.out.println("=======================================================");
+        System.out.println("================Riwayat Volunteer user p1==================");
+        System.out.println("=======================================================");
+        p1.showRiwayatVolunteer();
     }
 }

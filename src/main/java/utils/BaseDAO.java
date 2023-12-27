@@ -7,7 +7,7 @@ package utils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class BaseDAO {
 
@@ -20,7 +20,7 @@ public class BaseDAO {
         Connection con = null;
         try {
             con = DriverManager.getConnection("jdbc:mysql://" + DB_HOST + ":3306/" + DB_NAME, DB_USER, DB_PASS);
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return con;
@@ -29,7 +29,7 @@ public class BaseDAO {
     public static void closeCon(Connection con) {
         try {
             con.close();
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }

@@ -79,10 +79,8 @@ public class Organisasi extends User {
         this.deskripsi = deskripsi;
     }
     
-    public void displayKampanye()         
-    {
-        for(Kampanye k : this.listKampanye)
-        {
+    public void displayKampanye(){
+        for(Kampanye k : this.listKampanye){
             System.out.println(k.toString());
         }
     }

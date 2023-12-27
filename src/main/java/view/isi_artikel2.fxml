@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="950.0" prefWidth="800.0" style="-fx-background-color: E8FFEE;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Isi_artikel2Controller">
+   <children>
+      <HBox id="header" fx:id="header" layoutX="-2.0" prefHeight="74.0" prefWidth="838.0" style="-fx-background-color: E8FFEE;" styleClass="bayangan">
+         <effect>
+            <DropShadow height="59.54" radius="14.385" width="0.0" />
+         </effect>
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+         <children>
+            <ImageView fitHeight="45.0" fitWidth="220.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../logo1.png" />
+               </image>
+               <HBox.margin>
+                  <Insets bottom="14.0" left="14.0" top="14.0" />
+               </HBox.margin>
+            </ImageView>
+            <Label fx:id="button_tentangKami" style="-fx-font-family: Gill Sans MT; -fx-font-size: 12;" text="Tentang Kami">
+               <padding>
+                  <Insets bottom="14.0" left="75.0" top="30.0" />
+               </padding>
+            </Label>
+            <Label fx:id="button_artikel" style="-fx-font-family: Gill Sans MT; -fx-font-size: 12;" text="Artikel">
+               <padding>
+                  <Insets left="65.0" top="30.0" />
+               </padding>
+            </Label>
+            <Label fx:id="button_kampanye" style="-fx-font-family: Gill Sans MT; -fx-font-size: 12;" text="Kampanye">
+               <padding>
+                  <Insets left="65.0" top="30.0" />
+               </padding>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Label>
+            <Button fx:id="button_headerProfil" mnemonicParsing="false" prefHeight="31.0" prefWidth="80.0" style="-fx-background-color: none; -fx-border-radius: 10; -fx-font-weight: bold; -fx-text-fill: black; -fx-font-size: 12; -fx-text-box-border: transparet;" text="Profil">
+               <HBox.margin>
+                  <Insets bottom="14.0" left="190.0" top="24.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+      <Text fx:id="judulPageArtikel" layoutX="197.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tanah Subur, Pondasi Indonesia Hijau!">
+         <font>
+            <Font name="Gill Sans MT Bold" size="24.0" />
+         </font>
+      </Text>
+      <Text fx:id="deskripsiPageArtikel" layoutX="46.0" layoutY="499.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tanah, sekilas hanya hamparan coklat yang dipijak kaki kita. Namun, di balik kesederhanaannya, tersimpan keajaiban yang menghidupi planet ini. Tanah yang subur adalah orkestra biologi yang luar biasa, tempat berjuta organisme bekerja sama menyulap mineral mati menjadi permadani kehidupan yang hijau. Kesuburan tanah bukanlah sekadar kemampuannya menumbuhkan tanaman. Tanah yang subur adalah ekosistem mini yang kompleks, dihuni oleh mikroorganisme seperti bakteri, jamur, dan protozoa. Mereka bagaikan tim konstruksi kecil, mengurai bahan organik menjadi nutrisi yang mudah diserap tanaman. Cacing tanah, si tukang gali ulung, turut menyumbang dengan aerasi dan drainase yang baik, mencegah tanah menjadi becek dan kekurangan oksigen.Jalinan erat antara akar tanaman dan jamur mikroskopis, yang disebut simbiosis mikoriza, turut memperluas jangkauan penyerapan air dan nutrisi. Bakteri pengikat nitrogen, seperti bintil akar pada tanaman kacang-kacangan, menyulap nitrogen atmosfer menjadi pupuk alami yang menyehatkan tanah. Keanekaragaman hayati inilah yang membuat tanah subur bagaikan permata, berkilau dengan kehidupan.Bagi Indonesia, tanah subur bukan hanya harta karun, melainkan landasan kokoh menuju masa depan yang hijau dan lestari. Tanah merupakan salah satu unsur penting bagi kehidupan di bumi. Tanah merupakan tempat tumbuhnya tanaman, tempat hidup bagi berbagai organisme, dan berperan dalam siklus hidrologi. Tanah yang subur dapat mendukung pertumbuhan tanaman yang sehat dan produktif. Tanaman yang sehat dan produktif dapat menghasilkan pangan, serat, dan bahan baku industri yang dibutuhkan oleh manusia. Indonesia merupakan negara yang kaya akan sumber daya alam, termasuk tanah. Namun, dalam beberapa dekade terakhir, kesuburan tanah di Indonesia telah mengalami penurunan. Hal ini disebabkan oleh berbagai faktor, antara lain:Penggunaan pupuk dan pestisida yang berlebihanPenebangan liarKebakaran hutanPenurunan kesuburan tanah dapat berdampak negatif bagi lingkungan dan masyarakat, seperti menurunnya produktivitas pertanian, meningkatkan risiko erosi dan banjir, serta memperburuk kualitas udara. Oleh karena itu, perlu dilakukan upaya untuk meningkatkan kesuburan tanah di Indonesia. Upaya-upaya tersebut dapat dilakukan dengan mengurangi penggunaan pupuk dan pestisida, melakukan reboisasi dan penghijauan, serta mengoptimalkan penggunaan kompos dan pupuk organik.Dengan meningkatkan kesuburan tanah, kita dapat mewujudkan Indonesia hijau yang berkelanjutan." textAlignment="JUSTIFY" wrappingWidth="742.63671875">
+         <font>
+            <Font name="Gill Sans MT" size="13.0" />
+         </font>
+      </Text>
+      <Text fx:id="penulisPageArtikel" fill="#19a914" layoutX="46.0" layoutY="792.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ditulis oleh: 1001mimpi">
+         <font>
+            <Font name="Gill Sans MT Bold" size="11.0" />
+         </font>
+      </Text>
+      <HBox layoutX="-2.0" layoutY="863.0" prefHeight="93.0" prefWidth="838.0" style="-fx-background-color: #385f1c;">
+         <children>
+            <ImageView fitHeight="45.0" fitWidth="220.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../logo1.png" />
+               </image>
+               <HBox.margin>
+                  <Insets bottom="10.0" left="14.0" top="10.0" />
+               </HBox.margin>
+            </ImageView>
+            <Text fx:id="contactUs" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold; -fx-font-size: 17;" text="Contact Us :">
+               <HBox.margin>
+                  <Insets bottom="20.0" left="140.0" top="23.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <ImageView fx:id="fb" fitHeight="25.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../fb.png" />
+               </image>
+               <HBox.margin>
+                  <Insets bottom="20.0" left="60.0" top="23.0" />
+               </HBox.margin>
+            </ImageView>
+            <ImageView fx:id="ig" fitHeight="25.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../ig.png" />
+               </image>
+               <HBox.margin>
+                  <Insets bottom="20.0" left="10.0" top="23.0" />
+               </HBox.margin>
+            </ImageView>
+            <ImageView fx:id="tw" fitHeight="25.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../tw.png" />
+               </image>
+               <HBox.margin>
+                  <Insets bottom="20.0" left="10.0" top="23.0" />
+               </HBox.margin>
+            </ImageView>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="© 2023 Leaf Link, All Rights Reserved.">
+               <font>
+                  <Font size="10.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="48.0" right="14.0" top="26.0" />
+               </HBox.margin>
+            </Text>
+         </children>
+         <padding>
+            <Insets bottom="11.0" left="14.0" top="11.0" />
+         </padding>
+      </HBox>
+      <ImageView fx:id="gambarPageArtikel" fitHeight="316.0" fitWidth="847.0" layoutX="-2.0" layoutY="149.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../bumiNusantara.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

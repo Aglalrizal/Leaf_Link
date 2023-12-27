@@ -6,16 +6,11 @@
 package utils;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.UUID;
-import model.Artikel;
-import model.Kampanye;
 import model.Organisasi;
-import model.User;
 
 /**
  *
@@ -66,11 +61,11 @@ public class OrganisasiDAO {
         }
     }
     
-        public static Organisasi searchByUid(String idUser) {
+    public static Organisasi searchByUid(String idUser) {
         Organisasi u = null;
         try {
             con = BaseDAO.getCon();
-            String query = "select * from organisasi where idUser = '%s'";
+            query = "select * from organisasi where idUser = '%s'";
             query = String.format(query, idUser);
 
             stmt = con.prepareStatement(query);

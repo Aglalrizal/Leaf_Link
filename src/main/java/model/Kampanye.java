@@ -13,8 +13,8 @@ public class Kampanye {
     private UUID idKampanye;
     private String nama;
     private String deskripsi;
-    private List<Personal>volunteer = new ArrayList<>();
-    private int jumlahVolunteer;
+    private ArrayList<Personal> volunteer = new ArrayList<>();
+    private int targetVolunteer;
     private String lokasi;
     private long targetPendanaan;
     private long sumbangan;
@@ -32,7 +32,7 @@ public class Kampanye {
         System.out.println("Target Pendanaan: ");
         this.targetPendanaan = scanner.nextInt();
         System.out.println("Jumlah Volunteer");
-        this.jumlahVolunteer = scanner.nextInt();
+        this.targetVolunteer = scanner.nextInt();
     }
     
     public Kampanye(UUID uuid, String nama, String lokasi, String deskripsi, long targetPendanaan, long sumbangan, int jumlahVolunteer, Organisasi penyelenggara){
@@ -42,7 +42,7 @@ public class Kampanye {
         this.deskripsi = deskripsi;
         this.targetPendanaan = targetPendanaan;
         this.sumbangan = sumbangan;
-        this.jumlahVolunteer = jumlahVolunteer;
+        this.targetVolunteer = jumlahVolunteer;
         this.penyelenggara = penyelenggara;
     }
     
@@ -52,7 +52,7 @@ public class Kampanye {
         this.lokasi = lokasi;
         this.deskripsi = deskripsi;
         this.targetPendanaan = targetPendanaan;
-        this.jumlahVolunteer = jumlahVolunteer;
+        this.targetVolunteer = jumlahVolunteer;
         this.penyelenggara = penyelenggara;
     }
     
@@ -63,7 +63,7 @@ public class Kampanye {
         this.lokasi = lokasi;
         this.deskripsi = deskripsi;
         this.targetPendanaan = targetPendanaan;
-        this.jumlahVolunteer = jumlahVolunteer;
+        this.targetVolunteer = jumlahVolunteer;
         this.penyelenggara = penyelenggara;
     }
 
@@ -72,13 +72,13 @@ public class Kampanye {
         setIdKampanye(uuid);
         this.nama = nama;
         this.deskripsi = deskripsi;
-        this.jumlahVolunteer = jumlahVolunteer;
+        this.targetVolunteer = jumlahVolunteer;
         this.lokasi = lokasi;
         this.targetPendanaan = targetPendanaan;
         this.sumbangan = sumbangan;
     }
     
-    public UUID setIdKampanye(UUID idKampanye){
+    private UUID setIdKampanye(UUID idKampanye){
         return this.idKampanye = idKampanye;
     }
     
@@ -98,12 +98,12 @@ public class Kampanye {
         return nama;
     }
 
-    public List<Personal> getVolunteer() {
+    public ArrayList<Personal> getVolunteer() {
         return volunteer;
     }
 
-    public int getJumlahVolunteer() {
-        return jumlahVolunteer;
+    public int getTargetVolunteer() {
+        return targetVolunteer;
     }
 
     public String getLokasi() {
@@ -138,6 +138,8 @@ public class Kampanye {
                 "\nPenyenggara: "+getPenyelenggara().getNama()+
                 "\nNama: "+getNama()+
                 "\nLokasi: "+getLokasi()+
+                "\nVolunteer yang dibutuhkan: "+getTargetVolunteer()+
+                "\nJumlah Volunteer terdaftar: "+this.volunteer.size()+
                 "\nTarget Pendanaan: "+getTargetPendanaan()+
                 "\nUang Terkumpul: "+getSumbangan()+
                 "\nDeskripsi: "+getDeskripsi()+"\n";

@@ -9,8 +9,11 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.UUID;
 import model.Donasi;
 import model.Kampanye;
+import model.Personal;
 
 /**
  *
@@ -25,6 +28,7 @@ public class DonasiDAO {
         try{
             con = BaseDAO.getCon();
             d.getKampanye().donasi(d.getJml_sumbangan());
+            d.getPerson().addRiwayatDonasi(d);
             query = "INSERT INTO sumbangan VALUES ('%s', '%s', '%s', '%d')";
             query = String.format(
                     query,
@@ -68,4 +72,52 @@ public class DonasiDAO {
         return total;
     }
     
+    public static ArrayList<Donasi> getAllbyUser(Personal u) {
+        ArrayList<Donasi> res = new ArrayList<>();
+        try {
+            con = BaseDAO.getCon();
+            String query = "select * from sumbangan "
+                    + "where idUser = '%s'";
+
+            query = String.format(query, u.getIdUser().toString());
+            stmt = con.prepareStatement(query);
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                Donasi a = new Donasi(UUID.fromString(rs.getString("idDonasi")),
+                            KampanyeDAO.getKampanyeById(rs.getString("idKampanye")),
+                            PersonalDAO.searchByUid(rs.getString("idUser")),
+                            rs.getLong("jml_sumbangan"));
+                res.add(a);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            BaseDAO.closeCon(con);
+        }
+        return res;
+    }
+    
+    public static ArrayList<Donasi> getAll() {
+        ArrayList<Donasi> all = new ArrayList<>();
+        try {
+            con = BaseDAO.getCon();
+            String query = "select * from sumbangan ";
+
+            query = String.format(query);
+            stmt = con.prepareStatement(query);
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                Donasi a = new Donasi(UUID.fromString(rs.getString("idDonasi")),
+                            KampanyeDAO.getKampanyeById(rs.getString("idKampanye")),
+                            PersonalDAO.searchByUid(rs.getString("idUser")),
+                            rs.getLong("jml_sumbangan"));
+                all.add(a);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            BaseDAO.closeCon(con);
+        }
+        return all;
+    }
 }

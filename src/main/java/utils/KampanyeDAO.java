@@ -11,10 +11,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.UUID;
-import model.Donasi;
 import model.Kampanye;
 import model.Organisasi;
-import model.Personal;
 
 /**
  *
@@ -38,7 +36,7 @@ public class KampanyeDAO {
                     k.getLokasi(),
                     k.getDeskripsi(),
                     k.getTargetPendanaan(),
-                    k.getJumlahVolunteer(),
+                    k.getTargetVolunteer(),
                     o.getIdUser());
             stmt = con.prepareStatement(query);
             stmt.executeUpdate(query);
@@ -55,7 +53,7 @@ public class KampanyeDAO {
         ArrayList<Kampanye> res = new ArrayList<>();
         try {
             con = BaseDAO.getCon();
-            String query = "select * from kampanye "
+            query = "select * from kampanye "
                     + "where idUser = '%s'";
 
             query = String.format(query, u.getIdUser().toString());
@@ -84,7 +82,7 @@ public class KampanyeDAO {
         ArrayList<Kampanye> res = new ArrayList<>();
         try {
             con = BaseDAO.getCon();
-            String query = "select * from kampanye";
+            query = "select * from kampanye";
             stmt = con.prepareStatement(query);
             ResultSet rs = stmt.executeQuery(query);
             //UUID uuid, String nama, String lokasi, String deskripsi, int targetPendanaan, int jumlahVolunteer, Organisasi penyelenggara
@@ -106,4 +104,32 @@ public class KampanyeDAO {
         }
         return res;
     }
+    
+        public static Kampanye getKampanyeById(String id) {
+        Kampanye k = null;
+        try {
+            con = BaseDAO.getCon();
+            String query = "select * from kampanye where idKampanye = '%s'";
+            query = String.format(query, id);
+            stmt = con.prepareStatement(query);
+            ResultSet rs = stmt.executeQuery(query);
+            //UUID uuid, String nama, String lokasi, String deskripsi, int targetPendanaan, int jumlahVolunteer, Organisasi penyelenggara
+            if (rs.next()) {
+                k = new Kampanye(UUID.fromString(rs.getString(1)),
+                            rs.getString(2),
+                            rs.getString(3),
+                            rs.getString(4),
+                            rs.getInt(5),
+                            rs.getInt(6),
+                            OrganisasiDAO.searchByUid(rs.getString(7)));
+                k.setSumbangan(DonasiDAO.totalDonasi(k));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            BaseDAO.closeCon(con);
+        }
+        return k;
+    }
+    
 }
