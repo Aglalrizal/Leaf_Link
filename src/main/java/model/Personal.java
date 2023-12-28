@@ -19,21 +19,21 @@ public class Personal extends User {
 
     private ArrayList<Kampanye> riwayatVolunteer = new ArrayList<>();
     private ArrayList<Donasi> riwayatDonasi = new ArrayList<>();
-    private String tanggalLahir;
+    private Date tanggalLahir;
     
     public Personal(){
         super();
         this.role = "Personal";
     }
     
-    public Personal(String nama, String username, String email, String noHp, String alamat, String password, String pekerjaan, String tanggalLahir){
+    public Personal(String nama, String username, String email, String noHp, String alamat, String password, String pekerjaan, Date tanggalLahir){
         super(nama, username, email, noHp, alamat, password);
         this.role = "Personal";
         this.pekerjaan = pekerjaan;
         this.tanggalLahir = tanggalLahir;
     }
     
-    public Personal(UUID idUser, String nama, String username, String email, String noHp, String alamat, String password, String pekerjaan, String tanggalLahir){
+    public Personal(UUID idUser, String nama, String username, String email, String noHp, String alamat, String password, String pekerjaan, Date tanggalLahir){
         super(idUser,nama, username, email, noHp, alamat, password);
         this.role = "Personal";
         this.pekerjaan = pekerjaan;
@@ -93,11 +93,11 @@ public class Personal extends User {
         }
     }
     
-    public String getTanggalLahir() {
+    public Date getTanggalLahir() {
         return tanggalLahir;
     }
 
-    public void setTanggalLahir(String tanggalLahir) {
+    public void setTanggalLahir(Date tanggalLahir) {
         this.tanggalLahir = tanggalLahir;
     }
     public void display(){

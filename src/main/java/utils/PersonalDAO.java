@@ -25,19 +25,19 @@ public class PersonalDAO {
         try {
             con = BaseDAO.getCon();
             
-//            String checkUser = "SELECT COUNT(*) AS email_count FROM personal WHERE email = '%s'";
-//            checkUser = String.format(checkUser, user.getEmail());
-//                stmt = con.prepareStatement(checkUser);
-//                ResultSet rs = stmt.executeQuery(checkUser);
-//
-//            if (rs.next()) {
-//                int emailCount = rs.getInt("email_count");
-//
-//                if (emailCount > 0) {
-//                    System.out.println("Registrasi gagal: Email sudah terdaftar.");
-//                    return;
-//                }
-//            }
+            String checkUser = "SELECT COUNT(*) AS email_count FROM personal WHERE email = '%s'";
+            checkUser = String.format(checkUser, user.getEmail());
+                stmt = con.prepareStatement(checkUser);
+                ResultSet rs = stmt.executeQuery(checkUser);
+
+            if (rs.next()) {
+                int emailCount = rs.getInt("email_count");
+
+                if (emailCount > 0) {
+                    System.out.println("Registrasi gagal: Email sudah terdaftar.");
+                    return;
+                }
+            }
             
             query = "INSERT INTO personal VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')";
             query = String.format(
@@ -76,7 +76,7 @@ public class PersonalDAO {
                     u = new Personal(UUID.fromString(rsUser.getString("idUser")), rsUser.getString("nama"), 
                     rsUser.getString("username"), rsUser.getString("email"), rsUser.getString("noHp"), 
                     rsUser.getString("alamat"), rsUser.getString("password"), rsUser.getString("pekerjaan"),
-                    rsUser.getString("tanggal_lahir"));
+                    rsUser.getDate("tanggal_lahir"));
             }
         } catch (SQLException e) {
             e.printStackTrace();

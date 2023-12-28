@@ -6,10 +6,13 @@
 package utils;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.UUID;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.Organisasi;
 
 /**
@@ -21,24 +24,32 @@ public class OrganisasiDAO {
     private static Statement stmt;
     private static String query;
     
+   public static boolean checkEmail(String email) {
+    String checkUser = "SELECT COUNT(*) AS email_count FROM organisasi WHERE email = ?";
+    con = BaseDAO.getCon();
+    try (PreparedStatement pst = con.prepareStatement(checkUser)) {
+        pst.setString(1, email);
+        ResultSet rs = pst.executeQuery();
+        
+        if (rs.next()) {
+            int emailCount = rs.getInt("email_count");
+
+            if (emailCount > 0) {
+                System.out.println("Registrasi gagal: Email sudah terdaftar.");
+                return true;
+            }
+        }
+    } catch (SQLException ex) {
+        Logger.getLogger(OrganisasiDAO.class.getName()).log(Level.SEVERE, null, ex);
+    } finally {
+        BaseDAO.closeCon(con);
+    }
+    return false;
+}
+    
     public static void registerOrganisasi(Organisasi user) {
         try {
             con = BaseDAO.getCon();
-            
-//            String checkUser = "SELECT COUNT(*) AS email_count FROM organisasi WHERE email = '%s'";
-//            checkUser = String.format(checkUser, user.getEmail());
-//                stmt = con.prepareStatement(checkUser);
-//                ResultSet rs = stmt.executeQuery(checkUser);
-//
-//            if (rs.next()) {
-//                int emailCount = rs.getInt("email_count");
-//
-//                if (emailCount > 0) {
-//                    System.out.println("Registrasi gagal: Email sudah terdaftar.");
-//                    return;
-//                }
-//            }
-//            
             query = "INSERT INTO organisasi VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')";
             query = String.format(
                     query,
