@@ -1,0 +1,12 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Dec 27, 2023, 5:46:24 PM
+    Author     : rizal
+*/
+.button:hover {
+    -fx-background-color: #4CAF50; /* Ubah warna latar belakang saat hover */
+    -fx-text-fill: white; /* Ubah warna teks saat hover */
+}

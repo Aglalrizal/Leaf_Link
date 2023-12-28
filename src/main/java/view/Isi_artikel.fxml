@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" fx:id="page_iArtikel" prefHeight="950.0" prefWidth="800.0" style="-fx-background-color: E8FFEE;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Isi_artikelController">
+   <children>
+      <HBox id="header" fx:id="header" prefHeight="73.0" prefWidth="817.0" style="-fx-background-color: E8FFEE;" styleClass="bayangan">
+         <effect>
+            <DropShadow height="59.54" radius="14.385" width="0.0" />
+         </effect>
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+         <children>
+            <ImageView fitHeight="45.0" fitWidth="220.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/logo1.png" />
+               </image>
+               <HBox.margin>
+                  <Insets bottom="14.0" left="14.0" top="14.0" />
+               </HBox.margin>
+            </ImageView>
+            <Label fx:id="button_tentangKami" style="-fx-font-family: Gill Sans MT; -fx-font-size: 12;" text="Tentang Kami">
+               <padding>
+                  <Insets bottom="14.0" left="75.0" top="30.0" />
+               </padding>
+            </Label>
+            <Label fx:id="button_artikel" style="-fx-font-family: Gill Sans MT; -fx-font-size: 12;" text="Artikel">
+               <padding>
+                  <Insets left="65.0" top="30.0" />
+               </padding>
+            </Label>
+            <Label fx:id="button_kampanye" style="-fx-font-family: Gill Sans MT; -fx-font-size: 12;" text="Kampanye">
+               <padding>
+                  <Insets left="65.0" top="30.0" />
+               </padding>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Label>
+            <Button fx:id="button_headerProfil" mnemonicParsing="false" prefHeight="31.0" prefWidth="80.0" style="-fx-background-color: none; -fx-border-radius: 10; -fx-font-weight: bold; -fx-text-fill: black; -fx-font-size: 12; -fx-text-box-border: transparet;" text="Profil">
+               <HBox.margin>
+                  <Insets bottom="14.0" left="190.0" top="24.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+      <ImageView fx:id="gambarPageArtikel" fitHeight="310.0" fitWidth="817.0" layoutY="153.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/tanahSubur.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="judulPageArtikel" layoutX="184.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Menanam Harapan di Bumi Nusantara">
+         <font>
+            <Font name="Gill Sans MT Bold" size="24.0" />
+         </font>
+      </Text>
+      <Text fx:id="deskripsiPageArtikel" layoutX="37.0" layoutY="487.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pada tanggal 28 November setiap tahunnya, Indonesia memperingati Hari Menanam Pohon Indonesia. Hari ini merupakan momentum penting untuk mengingatkan kita akan pentingnya menanam pohon sebagai langkah konkret melawan perubahan iklim dan kerusakan lingkungan. Indonesia merupakan negara dengan kekayaan alam yang melimpah, termasuk hutan. Namun, dalam beberapa dekade terakhir, hutan di Indonesia telah mengalami banyak kerusakan, baik akibat penebangan liar, kebakaran hutan, maupun pembangunan. Hal ini tentu berdampak negatif bagi lingkungan dan kehidupan masyarakat.Pohon memiliki peran penting bagi lingkungan. Pohon dapat menyerap karbon dioksida, menghasilkan oksigen, dan membantu menjaga keseimbangan iklim. Pohon juga dapat mencegah erosi, banjir, dan tanah longsor. Oleh karena itu, menanam pohon merupakan salah satu cara yang dapat kita lakukan untuk menjaga lingkungan dan mengatasi perubahan iklim. Dengan menanam pohon, kita dapat menanam harapan untuk masa depan yang lebih baik bagi Bumi Nusantara.Pemerintah Indonesia telah melakukan berbagai upaya untuk meningkatkan luasan hutan. Pada tahun 2023, luas hutan di Indonesia mencapai 192,7 juta hektare, atau sekitar 50% dari luas daratan Indonesia. Namun, luasan ini masih jauh dari target yang ditetapkan oleh pemerintah, yaitu 268 juta hektare pada tahun 2045.Untuk mencapai target tersebut, pemerintah telah menerapkan berbagai kebijakan, antara lain:Penegakan hukum yang tegas terhadap pelaku penebangan liar dan pembakaran hutan.Pemberian insentif bagi masyarakat yang menanam pohon.Pengembangan teknologi untuk rehabilitasi hutan dan lahan.Selain itu, masyarakat juga dapat berperan aktif dalam menanam pohon. Masyarakat dapat menanam pohon di sekitar rumah, di lahan kosong, atau di kawasan hutan. Menanam pohon adalah kegiatan yang sederhana, tetapi memiliki dampak yang besar bagi lingkungan. Dengan menanam pohon, kita dapat menanam harapan untuk masa depan yang lebih baik bagi Bumi Nusantara. Berikut adalah beberapa hal yang dapat kita lakukan untuk menanam pohon:Pilihlah jenis pohon yang sesuai dengan kondisi tanah dan iklim di daerah Anda.Siapkan lubang tanam yang cukup besar, dengan ukuran 50x50x50 cm.Campurkan tanah dan pupuk kandang untuk meningkatkan kesuburan tanah.Letakkan bibit pohon di tengah lubang tanam, lalu timbun dengan tanah yang telah dicampur pupuk kandang.Siram pohon secara rutin, terutama pada saat musim kemarau.Mari kita bersama-sama menanam pohon untuk masa depan yang lebih baik bagi Bumi Nusantara!" textAlignment="JUSTIFY" wrappingWidth="742.63671875">
+         <font>
+            <Font name="Gill Sans MT" size="13.0" />
+         </font>
+      </Text>
+      <Text fx:id="penulisPageArtikel" fill="#19a914" layoutX="37.0" layoutY="798.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ditulis oleh: 1001mimpi">
+         <font>
+            <Font name="Gill Sans MT Bold" size="11.0" />
+         </font>
+      </Text>
+      <HBox layoutY="858.0" prefHeight="92.0" prefWidth="817.0" style="-fx-background-color: #385f1c;">
+         <children>
+            <ImageView fitHeight="45.0" fitWidth="220.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/logo1.png" />
+               </image>
+               <HBox.margin>
+                  <Insets bottom="10.0" left="14.0" top="10.0" />
+               </HBox.margin>
+            </ImageView>
+            <Text fx:id="contactUs" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold; -fx-font-size: 17;" text="Contact Us :">
+               <HBox.margin>
+                  <Insets bottom="20.0" left="140.0" top="23.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <ImageView fx:id="fb" fitHeight="25.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/fb.png" />
+               </image>
+               <HBox.margin>
+                  <Insets bottom="20.0" left="60.0" top="23.0" />
+               </HBox.margin>
+            </ImageView>
+            <ImageView fx:id="ig" fitHeight="25.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/ig.png" />
+               </image>
+               <HBox.margin>
+                  <Insets bottom="20.0" left="10.0" top="23.0" />
+               </HBox.margin>
+            </ImageView>
+            <ImageView fx:id="tw" fitHeight="25.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/tw.png" />
+               </image>
+               <HBox.margin>
+                  <Insets bottom="20.0" left="10.0" top="23.0" />
+               </HBox.margin>
+            </ImageView>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="© 2023 Leaf Link, All Rights Reserved.">
+               <font>
+                  <Font size="10.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="48.0" right="14.0" top="26.0" />
+               </HBox.margin>
+            </Text>
+         </children>
+         <padding>
+            <Insets bottom="11.0" left="14.0" top="11.0" />
+         </padding>
+      </HBox>
+   </children>
+</AnchorPane>
