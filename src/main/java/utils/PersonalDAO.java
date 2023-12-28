@@ -6,10 +6,13 @@
 package utils;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.UUID;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.Personal;
 
 /**
@@ -21,6 +24,29 @@ public class PersonalDAO {
      private static Statement stmt;
      private static String query;
     
+    public static boolean checkEmail(String email) {
+        String checkUser = "SELECT COUNT(*) AS email_count FROM personal WHERE email = ?";
+        con = BaseDAO.getCon();
+        try (PreparedStatement pst = con.prepareStatement(checkUser)) {
+            pst.setString(1, email);
+            ResultSet rs = pst.executeQuery();
+
+            if (rs.next()) {
+                int emailCount = rs.getInt("email_count");
+
+                if (emailCount > 0) {
+                    System.out.println("Registrasi gagal: Email sudah terdaftar.");
+                    return true;
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(OrganisasiDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            BaseDAO.closeCon(con);
+        }
+        return false;
+    }
+       
     public static void registerPersonal(Personal user) {
         try {
             con = BaseDAO.getCon();
@@ -85,25 +111,27 @@ public class PersonalDAO {
         }
         return u;
     }
-//        public static User validatePersonal(String email, String password) {
-//        User u = null;
-//        try {
-//            con = BaseDAO.getCon();
-//            query = "select idUser from personal where email = '%s' and password = '%s' ";
-//            query = String.format(query,
-//                    email,
-//                    password);
-//            stmt = con.prepareStatement(query);
-//            ResultSet rs = stmt.executeQuery(query);
-//            if (rs.next()) {
-//                u = new User(UUID.fromString(rs.getString("idUser")), rs.getString("username"), rs.getString("nama"), rs.getString("email"), rs.getString("noHp"), rs.getString("alamat"), password, rs.getString("deskripsi"), rs.getString("role"));
-//            }
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        } finally {
-//            BaseDAO.closeCon(con);
-//        }
-//        return u;
-//    }
-//        
+        public static Personal validatePersonal(String email, String password) {
+        Personal u = null;
+        try {
+            con = BaseDAO.getCon();
+            query = "select * from personal where email = '%s' and password = '%s' ";
+            query = String.format(query,
+                    email,
+                    password);
+            stmt = con.prepareStatement(query);
+            ResultSet rsUser = stmt.executeQuery(query);
+            if (rsUser.next()) {
+                 u = new Personal(UUID.fromString(rsUser.getString("idUser")), rsUser.getString("nama"), 
+                    rsUser.getString("username"), rsUser.getString("email"), rsUser.getString("noHp"), 
+                    rsUser.getString("alamat"), rsUser.getString("password"), rsUser.getString("pekerjaan"),
+                    rsUser.getDate("tanggal_lahir"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            BaseDAO.closeCon(con);
+        }
+        return u;
+    }      
 }

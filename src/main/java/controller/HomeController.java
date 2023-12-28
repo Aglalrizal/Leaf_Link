@@ -43,11 +43,7 @@ public class HomeController implements Initializable {
     @FXML
     private HBox aksi1;
     @FXML
-    private ImageView gambarAksi1;
-    @FXML
     private HBox aksi2;
-    @FXML
-    private ImageView gambarAksi2;
     @FXML
     private HBox aksi3;
     @FXML
@@ -74,6 +70,8 @@ public class HomeController implements Initializable {
     private ImageView ig;
     @FXML
     private ImageView tw;
+    @FXML
+    private Text homeName1;
 
     /**
      * Initializes the controller class.

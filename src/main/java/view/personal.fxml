@@ -23,13 +23,13 @@
             <Text fill="#44ae55" layoutX="290.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 10; -fx-font-family: Gill Sans MT;" text="Nomor Telepon" />
             <Text fill="#44ae55" layoutX="290.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 10; -fx-font-family: Gill Sans MT;" text="Pekerjaan" />
             <Text fill="#44ae55" layoutX="290.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 10; -fx-font-family: Gill Sans MT;" text="Kata Sandi" />
-            <Button fx:id="personal_daftar" layoutX="168.0" layoutY="234.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="184.0" style="-fx-background-radius: 10; -fx-background-color: #19a914; -fx-font-weight: bold;" text="Daftar" textAlignment="CENTER" textFill="WHITE" />
+            <Button fx:id="personal_daftar" layoutX="168.0" layoutY="234.0" mnemonicParsing="false" onAction="#daftarPersonal" prefHeight="32.0" prefWidth="184.0" style="-fx-background-radius: 10; -fx-background-color: #19a914; -fx-font-weight: bold;" text="Daftar" textAlignment="CENTER" textFill="WHITE" />
             <TextField fx:id="personal_alamat" layoutX="290.0" layoutY="38.0" prefHeight="15.0" prefWidth="184.0" style="-fx-background-color: EDF2F7; -fx-background-radius: 10; -fx-border-width: 0;" />
             <TextField fx:id="personal_nama" layoutX="45.0" layoutY="88.0" prefHeight="15.0" prefWidth="184.0" style="-fx-background-color: EDF2F7; -fx-background-radius: 10; -fx-border-width: 0;" />
             <TextField fx:id="personal_username" layoutX="45.0" layoutY="138.0" prefHeight="15.0" prefWidth="184.0" style="-fx-background-color: EDF2F7; -fx-background-radius: 10; -fx-border-width: 0;" />
             <TextField fx:id="personal_no" layoutX="290.0" layoutY="88.0" prefHeight="15.0" prefWidth="184.0" style="-fx-background-color: EDF2F7; -fx-background-radius: 10; -fx-border-width: 0;" />
             <TextField fx:id="personal_pekerjaan" layoutX="290.0" layoutY="138.0" prefHeight="15.0" prefWidth="184.0" style="-fx-background-color: EDF2F7; -fx-background-radius: 10; -fx-border-width: 0;" />
-            <DatePicker fx:id="personal_tanggalLahir" layoutX="45.0" layoutY="188.0" prefHeight="25.0" prefWidth="184.0" style="-fx-background-color: EDF2F7; -fx-background-radius: 10; -fx-border-width: 0;" />
+            <DatePicker fx:id="personal_tanggalLahir" layoutX="45.0" layoutY="188.0" prefHeight="25.0" prefWidth="184.0" promptText="Minimal berusia 17 Tahun" style="-fx-background-color: EDF2F7; -fx-background-radius: 10; -fx-border-width: 0;" />
             <PasswordField fx:id="personal_kataSandi" layoutX="290.0" layoutY="188.0" prefHeight="25.0" prefWidth="184.0" style="-fx-background-color: EDF2F7; -fx-background-radius: 10; -fx-border-width: 0;" />
          </children>
       </Pane>

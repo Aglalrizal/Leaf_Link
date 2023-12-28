@@ -7,11 +7,8 @@ package controller;
 import java.awt.HeadlessException;
 import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,9 +22,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javax.swing.JOptionPane;
 import model.Organisasi;
-import model.User;
 import utils.OrganisasiDAO;
 
 /**
@@ -111,16 +106,13 @@ public class OrganisasiController implements Initializable {
     private void registerOrganisasi(ActionEvent event) throws IOException {
         if (isInputValid()) {
             try {
-                // Check jika email sudah terdaftar sebelumnya
                 if(OrganisasiDAO.checkEmail(organisasi_email.getText())) {
                     showErrorAlert("Pendaftaran gagal! Email sudah terdaftar!");
                 } else {
-                    // Lanjut ke proses registrasi jika email belum terdaftar
                     Organisasi o = new Organisasi(organisasi_namaOrganisasi.getText(), organisasi_username.getText(), organisasi_email.getText(),
                                                     organisasi_no.getText(), organisasi_alamat.getText(), organisasi_kataSandi.getText(), 
                                                     organisasi_deskripsi.getText());
                     OrganisasiDAO.registerOrganisasi(o);
-                    // Pesan kesuksesan pendaftaran
                     Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
                     successAlert.setTitle("Yeay, Berhasil mendaftar!");
                     successAlert.setHeaderText(null);
@@ -136,5 +128,4 @@ public class OrganisasiController implements Initializable {
             showErrorAlert("Tolong isi dengan data yang valid ya!");
         }
     }
-    
 }

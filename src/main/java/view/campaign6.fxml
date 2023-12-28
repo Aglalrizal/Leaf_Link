@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="857.0" prefWidth="800.0" style="-fx-background-color: E8FFEE;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Campaign6Controller">
+<AnchorPane id="AnchorPane" prefHeight="857.0" prefWidth="800.0" style="-fx-background-color: E8FFEE;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Campaign6Controller">
    <children>
       <AnchorPane id="AnchorPane" prefHeight="857.0" prefWidth="800.0" style="-fx-background-color: E8FFEE;">
          <children>
@@ -125,12 +125,12 @@
                   <Font name="Gill Sans MT" size="14.0" />
                </font>
             </Text>
-            <Button fx:id="donasi_campaign" layoutX="450.0" layoutY="324.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="80.0" style="-fx-background-color: none; -fx-border-color: #19a914; -fx-border-radius: 10; -fx-text-fill: #385F1C; -fx-font-size: 14; -fx-font-weight: bold; -fx-text-box-border: transparet;" text="Donasi" AnchorPane.leftAnchor="450.0" AnchorPane.topAnchor="325.0">
+            <Button fx:id="donasi_campaign" layoutX="338.0" layoutY="415.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="80.0" style="-fx-background-color: none; -fx-border-color: #19a914; -fx-border-radius: 10; -fx-text-fill: #385F1C; -fx-font-size: 14; -fx-font-weight: bold; -fx-text-box-border: transparet;" text="Donasi" AnchorPane.leftAnchor="338.0" AnchorPane.topAnchor="415.0">
                <padding>
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                </padding>
             </Button>
-            <Button fx:id="volunteer_campaign" layoutX="558.0" layoutY="324.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="96.0" style="-fx-background-color: none; -fx-border-color: #19a914; -fx-border-radius: 10; -fx-text-fill: #385F1C; -fx-font-size: 14; -fx-font-weight: bold; -fx-text-box-border: transparet;" text="Volunteer" AnchorPane.leftAnchor="558.0" AnchorPane.topAnchor="325.0">
+            <Button fx:id="volunteer_campaign" layoutX="446.0" layoutY="414.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="96.0" style="-fx-background-color: none; -fx-border-color: #19a914; -fx-border-radius: 10; -fx-text-fill: #385F1C; -fx-font-size: 14; -fx-font-weight: bold; -fx-text-box-border: transparet;" text="Volunteer" AnchorPane.leftAnchor="446.0" AnchorPane.topAnchor="414.0">
                <padding>
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                </padding>

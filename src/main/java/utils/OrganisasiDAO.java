@@ -25,27 +25,27 @@ public class OrganisasiDAO {
     private static String query;
     
    public static boolean checkEmail(String email) {
-    String checkUser = "SELECT COUNT(*) AS email_count FROM organisasi WHERE email = ?";
-    con = BaseDAO.getCon();
-    try (PreparedStatement pst = con.prepareStatement(checkUser)) {
-        pst.setString(1, email);
-        ResultSet rs = pst.executeQuery();
-        
-        if (rs.next()) {
-            int emailCount = rs.getInt("email_count");
+        String checkUser = "SELECT COUNT(*) AS email_count FROM organisasi WHERE email = ?";
+        con = BaseDAO.getCon();
+        try (PreparedStatement pst = con.prepareStatement(checkUser)) {
+            pst.setString(1, email);
+            ResultSet rs = pst.executeQuery();
 
-            if (emailCount > 0) {
-                System.out.println("Registrasi gagal: Email sudah terdaftar.");
-                return true;
+            if (rs.next()) {
+                int emailCount = rs.getInt("email_count");
+
+                if (emailCount > 0) {
+                    System.out.println("Registrasi gagal: Email sudah terdaftar.");
+                    return true;
+                }
             }
+        } catch (SQLException ex) {
+            Logger.getLogger(OrganisasiDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            BaseDAO.closeCon(con);
         }
-    } catch (SQLException ex) {
-        Logger.getLogger(OrganisasiDAO.class.getName()).log(Level.SEVERE, null, ex);
-    } finally {
-        BaseDAO.closeCon(con);
+        return false;
     }
-    return false;
-}
     
     public static void registerOrganisasi(Organisasi user) {
         try {
@@ -98,7 +98,7 @@ public class OrganisasiDAO {
         Organisasi u = null;
         try {
             con = BaseDAO.getCon();
-            query = "select idUser from organisasi where email = '%s' and password = '%s' ";
+            query = "select * from organisasi where email = '%s' and password = '%s' ";
             query = String.format(query,
                     email,
                     password);
