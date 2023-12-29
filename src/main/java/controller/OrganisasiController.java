@@ -7,8 +7,11 @@ package controller;
 import java.awt.HeadlessException;
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,7 +23,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Organisasi;
 import utils.OrganisasiDAO;
@@ -32,24 +38,38 @@ import utils.OrganisasiDAO;
  */
 public class OrganisasiController implements Initializable {
 
-    @FXML
-    private AnchorPane page_organisasi;
-    @FXML
-    private TextField organisasi_email;
+      @FXML
+    private TextField organisasi_alamat;
+
     @FXML
     private Button organisasi_daftar;
-    @FXML
-    private TextField organisasi_alamat;
-    @FXML
-    private TextField organisasi_no;
-    @FXML
-    private TextField organisasi_namaOrganisasi;
-    @FXML
-    private TextField organisasi_username;
-    @FXML
-    private PasswordField organisasi_kataSandi;
+
     @FXML
     private TextArea organisasi_deskripsi;
+
+    @FXML
+    private TextField organisasi_email;
+
+    @FXML
+    private PasswordField organisasi_kataSandi;
+
+    @FXML
+    private TextField organisasi_namaOrganisasi;
+
+    @FXML
+    private Text organisasi_no;
+
+    @FXML
+    private TextField organisasi_noTel;
+
+    @FXML
+    private TextField organisasi_username;
+
+    @FXML
+    private AnchorPane page_organisasi;
+
+    @FXML
+    private ImageView tombol_back;
 
     /**
      * Initializes the controller class.
@@ -62,7 +82,7 @@ public class OrganisasiController implements Initializable {
     private boolean isInputValid() {
     return isEmailValid(organisasi_email.getText())
             && isNotEmpty(organisasi_alamat.getText())
-            && isPhoneNumberValid(organisasi_no.getText())
+            && isPhoneNumberValid(organisasi_noTel.getText())
             && isNotEmpty(organisasi_namaOrganisasi.getText())
             && isNotEmpty(organisasi_username.getText())
             && isNotEmpty(organisasi_kataSandi.getText())
@@ -103,20 +123,20 @@ public class OrganisasiController implements Initializable {
     }
     
     @FXML
-    private void registerOrganisasi(ActionEvent event) throws IOException {
+    private void validateAndRegister(ActionEvent event) {
         if (isInputValid()) {
             try {
                 if(OrganisasiDAO.checkEmail(organisasi_email.getText())) {
-                    showErrorAlert("Pendaftaran gagal! Email sudah terdaftar!");
+                    showErrorAlert("Pendaftaran Gagal! Email Sudah Terdaftar!");
                 } else {
                     Organisasi o = new Organisasi(organisasi_namaOrganisasi.getText(), organisasi_username.getText(), organisasi_email.getText(),
-                                                    organisasi_no.getText(), organisasi_alamat.getText(), organisasi_kataSandi.getText(), 
+                                                    organisasi_noTel.getText(), organisasi_alamat.getText(), organisasi_kataSandi.getText(), 
                                                     organisasi_deskripsi.getText());
                     OrganisasiDAO.registerOrganisasi(o);
                     Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
-                    successAlert.setTitle("Yeay, Berhasil mendaftar!");
+                    successAlert.setTitle("Yeay, Berhasil Mendaftar!");
                     successAlert.setHeaderText(null);
-                    successAlert.setContentText("Silahkan login!");
+                    successAlert.setContentText("Silahkan Login!");
                     successAlert.showAndWait();
                     switchToLoginPage();
                 }
@@ -126,6 +146,19 @@ public class OrganisasiController implements Initializable {
             }
         } else {
             showErrorAlert("Tolong isi dengan data yang valid ya!");
+        }
+    }
+    
+    @FXML
+    void backToChooseTypeAccount(MouseEvent event) throws IOException {
+        try {
+            Stage stage = (Stage) tombol_back.getScene().getWindow();
+            URL url = new File("src/main/java/view/DaftarSebagai.fxml").toURI().toURL();
+            Parent root = FXMLLoader.load(url);
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

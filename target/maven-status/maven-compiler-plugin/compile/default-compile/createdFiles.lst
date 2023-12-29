@@ -8,13 +8,13 @@ main\Main.class
 model\Kampanye.class
 controller\Campaign4Controller.class
 controller\Campaign7Controller.class
+controller\MainController.class
 controller\Campaign3Controller.class
 controller\LoginController.class
 controller\Campaign6Controller.class
 controller\PersonalController.class
 model\Donasi.class
 controller\TentangKamiController.class
-controller\LandingController.class
 model\User.class
 model\Personal.class
 controller\OrganisasiController.class

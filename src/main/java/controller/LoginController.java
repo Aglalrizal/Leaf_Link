@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,14 +24,12 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
-import model.User;
-import model.Admin;
-import model.Personal;
-import model.Organisasi;
 import utils.OrganisasiDAO;
 import utils.PersonalDAO;
 
@@ -39,19 +39,21 @@ import utils.PersonalDAO;
  * @author Acer OLED
  */
 public class LoginController implements Initializable {
-    
-    public Admin admin;
-    public Organisasi org;
-    public Personal pers;
 
-     @FXML
+    @FXML
     private RadioButton adminRadioBtn;
 
     @FXML
     private Text belumPunyaAkun;
 
     @FXML
-    private Text loginEmail;
+    private Button btnSignUp;
+
+    @FXML
+    private Text label_email;
+
+    @FXML
+    private TextField login_email;
 
     @FXML
     private PasswordField login_kataSandi;
@@ -73,19 +75,21 @@ public class LoginController implements Initializable {
 
     @FXML
     private ToggleGroup role;
-    
-    private String selectedRole;
+
     @FXML
-    private TextField login_email;
+    private ImageView tombol_back;
+    
+    public static String selectedRole;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        admin = null;
-        org = null;
-        pers = null;
+        MainController.a = null;
+        MainController.p = null;
+        MainController.o = null;
+        selectedRole = null;
     }    
     
     private boolean isInputValid() {
@@ -119,24 +123,50 @@ public class LoginController implements Initializable {
             selectedRole = "admin";
         }
     }
+    
+    @FXML
+    void backToLandingPage(MouseEvent event) throws IOException {
+        try {
+            Stage stage = (Stage) tombol_back.getScene().getWindow();
+            URL url = new File("src/main/java/view/Landing.fxml").toURI().toURL();
+            Parent root = FXMLLoader.load(url);
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     @FXML
-    private void login(ActionEvent event) throws MalformedURLException, IOException {
+    void openSignUpPage(ActionEvent event) throws IOException {
+        try {
+            Stage stage = (Stage) tombol_back.getScene().getWindow();
+            URL url = new File("src/main/java/view/DaftarSebagai.fxml").toURI().toURL();
+            Parent root = FXMLLoader.load(url);
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    void validateAndLogin(ActionEvent event) throws MalformedURLException, IOException {
         if(isInputValid()){
             try{
                 if("personal".equals(selectedRole)){
-                    pers = PersonalDAO.validatePersonal(login_email.getText(), login_kataSandi.getText());
+                    MainController.p = PersonalDAO.validatePersonal(login_email.getText(), login_kataSandi.getText());
                 }else if("organisasi".equals(selectedRole)){
-                    org = OrganisasiDAO.validateOrganisasi(login_email.getText(), login_kataSandi.getText());
+                    MainController.o = OrganisasiDAO.validateOrganisasi(login_email.getText(), login_kataSandi.getText());
                 }
-                if (org != null|pers != null) {
+                if (MainController.o != null|MainController.p != null) {
                     Stage stage = (Stage) login_masuk.getScene().getWindow();
                     URL url = new File("src/main/java/view/Home.fxml").toURI().toURL();
                     Parent root = FXMLLoader.load(url);
                     Scene scene = new Scene(root);
                     stage.setScene(scene);
                 } else {
-                    JOptionPane.showMessageDialog(null, "INVALID USERNAME/PASSWORD!!!");
+                    JOptionPane.showMessageDialog(null, "INVALID EMAIL/KATA SANDI!!!");
                 }
             }catch(HeadlessException e){
                 e.printStackTrace();
@@ -145,4 +175,5 @@ public class LoginController implements Initializable {
             showErrorAlert("Tolong isi dengan data yang valid ya!");
         }
     }
+
 }

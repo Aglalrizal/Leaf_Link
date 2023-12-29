@@ -7,10 +7,13 @@ package controller;
 import java.awt.HeadlessException;
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,7 +25,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Personal;
 import utils.PersonalDAO;
@@ -34,26 +40,44 @@ import utils.PersonalDAO;
  */
 public class PersonalController implements Initializable {
 
+     @FXML
+    private AnchorPane page_organisasi;
+
     @FXML
     private AnchorPane page_personal;
-    @FXML
-    private TextField personal_email;
-    @FXML
-    private Button personal_daftar;
+
     @FXML
     private TextField personal_alamat;
+
     @FXML
-    private TextField personal_nama;
+    private Button personal_daftar;
+
     @FXML
-    private TextField personal_username;
-    @FXML
-    private TextField personal_no;
-    @FXML
-    private TextField personal_pekerjaan;
+    private TextField personal_email;
+
     @FXML
     private PasswordField personal_kataSandi;
+
+    @FXML
+    private TextField personal_nama;
+
+    @FXML
+    private TextField personal_no;
+
+    @FXML
+    private TextField personal_pekerjaan;
+
     @FXML
     private DatePicker personal_tanggalLahir;
+
+    @FXML
+    private Text personal_ttl;
+
+    @FXML
+    private TextField personal_username;
+
+    @FXML
+    private ImageView tombol_back;
 
     /**
      * Initializes the controller class.
@@ -65,7 +89,7 @@ public class PersonalController implements Initializable {
     
     
     private boolean isInputValid() {
-    return isEmailValid(personal_email.getText())
+        return isEmailValid(personal_email.getText())
             && isNotEmpty(personal_alamat.getText())
             && isPhoneNumberValid(personal_no.getText())
             && isNotEmpty(personal_nama.getText())
@@ -86,10 +110,12 @@ public class PersonalController implements Initializable {
     private boolean isNotEmpty(String text) {
         return !text.trim().isEmpty();
     }
+    
     public boolean isDOBValid(LocalDate selectedDate) {
-    LocalDate seventeenYearsAgo = LocalDate.now().minusYears(17);
-    return selectedDate.isBefore(seventeenYearsAgo);
-}
+        LocalDate seventeenYearsAgo = LocalDate.now().minusYears(17);
+        return selectedDate.isBefore(seventeenYearsAgo);
+    }
+    
     private void showErrorAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error");
@@ -110,10 +136,23 @@ public class PersonalController implements Initializable {
             showErrorAlert("Error occurred while loading login page.");
         }
     }
+    
+    @FXML
+    void backToChooseTypeAccount(MouseEvent event) throws IOException {
+        try {
+            Stage stage = (Stage) tombol_back.getScene().getWindow();
+            URL url = new File("src/main/java/view/DaftarSebagai.fxml").toURI().toURL();
+            Parent root = FXMLLoader.load(url);
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     @FXML
-    private void daftarPersonal(ActionEvent event) {
-            if (isInputValid()) {
+    void validateAndRegister(ActionEvent event) {
+         if (isInputValid()) {
             try {
                 if(PersonalDAO.checkEmail(personal_email.getText())) {
                     showErrorAlert("Pendaftaran gagal! Email sudah terdaftar!");
@@ -138,5 +177,4 @@ public class PersonalController implements Initializable {
             showErrorAlert("Tolong isi dengan data yang valid ya!");
         }
     }
-    
 }

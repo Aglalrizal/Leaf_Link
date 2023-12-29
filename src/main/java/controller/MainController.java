@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -20,6 +21,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import model.Admin;
+import model.Organisasi;
+import model.Personal;
 import model.User;
 
 /**
@@ -27,14 +31,13 @@ import model.User;
  *
  * @author Acer OLED
  */
-public class LandingController implements Initializable {
+public class MainController implements Initializable {
     
     public static User user;
+    public static Organisasi o;
+    public static Personal p;
+    public static Admin a;
     
-    @FXML
-    private ImageView page_landing;
-    @FXML
-    private HBox header;
     @FXML
     private Label button_tentangKami;
     @FXML
@@ -55,11 +58,14 @@ public class LandingController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         user = null;
+        o = null;
+        p = null;
+        a = null;
     }    
 
     @FXML
-    private void openLoginPage(MouseEvent event) {
-       try {
+    private void openLoginPage(ActionEvent event) {
+        try {
             Stage stage = (Stage) button_masuk.getScene().getWindow();
             URL url = new File("src/main/java/view/Login.fxml").toURI().toURL();
             Parent root = FXMLLoader.load(url);
@@ -71,9 +77,9 @@ public class LandingController implements Initializable {
     }
 
     @FXML
-    private void pilihRole(MouseEvent event) {
+    private void openSignUp(ActionEvent event) {
         try {
-            Stage stage = (Stage) button_masuk.getScene().getWindow();
+            Stage stage = (Stage) button_daftar.getScene().getWindow();
             URL url = new File("src/main/java/view/DaftarSebagai.fxml").toURI().toURL();
             Parent root = FXMLLoader.load(url);
             Scene scene = new Scene(root);
