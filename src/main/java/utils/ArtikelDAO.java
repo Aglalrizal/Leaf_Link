@@ -6,6 +6,7 @@
 package utils;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -28,15 +29,18 @@ public class ArtikelDAO {
         try{
             con = BaseDAO.getCon();
             organisasi.addArtikel(artikel);
-            query = "INSERT INTO Artikel VALUES ('%s', '%s', '%s', '%s')";
-            query = String.format(
-                    query,
-                    artikel.getIdArtikel(),
-                    artikel.getJudul(),
-                    artikel.getIsi(),
-                    organisasi.getIdUser());
-            stmt = con.prepareStatement(query);
-            stmt.executeUpdate(query);
+            query = "INSERT INTO Artikel (idArtikel, judul, isi, idUser, image) VALUES (?, ?, ?, ?, ?)";
+            PreparedStatement st = con.prepareStatement(query);
+
+            // Menyetel nilai parameter pada PreparedStatement
+            st.setString(1, artikel.getIdArtikel().toString());
+            st.setString(2, artikel.getJudul());
+            st.setString(3, artikel.getIsi());
+            st.setString(4, organisasi.getIdUser().toString());
+            st.setBytes(5, artikel.getDataGambar());
+
+        // Eksekusi pernyataan PreparedStatement
+            st.executeUpdate();
             System.out.println("Berhasil menambahkan Artikel!");
         }catch(SQLException ex){
             System.err.print("Error inserting data: "+ ex.getMessage());
@@ -60,7 +64,8 @@ public class ArtikelDAO {
                 Artikel a = new Artikel(UUID.fromString(rs.getString("idArtikel")),
                             rs.getString("judul"),
                             rs.getString("isi"),
-                            u);
+                            u,
+                            rs.getBytes("image"));
                 res.add(a);
             }
         } catch (SQLException e) {
@@ -84,7 +89,8 @@ public class ArtikelDAO {
                 Artikel a = new Artikel(UUID.fromString(rs.getString("idArtikel")),
                             rs.getString("judul"),
                             rs.getString("isi"),
-                            OrganisasiDAO.searchByUid(rs.getString("idUser")));
+                            OrganisasiDAO.searchByUid(rs.getString("idUser")),
+                            rs.getBytes("image"));
                 all.add(a);
             }
         } catch (SQLException e) {

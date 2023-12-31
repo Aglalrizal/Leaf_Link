@@ -2,261 +2,375 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ProgressBar?>
-<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" fx:id="page_home" prefHeight="1300.0" prefWidth="800.0" style="-fx-background-color: E8FFEE;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeController">
-   <children>
-      <HBox id="header" fx:id="header" prefHeight="80.0" prefWidth="815.0" style="-fx-background-color: E8FFEE;" styleClass="bayangan">
-         <effect>
-            <DropShadow height="59.54" radius="14.385" width="0.0" />
-         </effect>
-         <cursor>
-            <Cursor fx:constant="TEXT" />
-         </cursor>
+<ScrollPane fx:id="page_home" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: E8FFEE;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeController">
+   <content>
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1850.0" prefWidth="1280.0" style="-fx-background-color: E8FFEE;">
          <children>
-            <ImageView fitHeight="45.0" fitWidth="220.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../image/logo1.png" />
-               </image>
-               <HBox.margin>
-                  <Insets bottom="14.0" left="14.0" top="14.0" />
-               </HBox.margin>
-            </ImageView>
-            <Label fx:id="button_tentangKami" style="-fx-font-family: Gill Sans MT; -fx-font-size: 12;" text="Tentang Kami">
-               <padding>
-                  <Insets bottom="14.0" left="75.0" top="30.0" />
-               </padding>
-            </Label>
-            <Label fx:id="button_artikel" style="-fx-font-family: Gill Sans MT; -fx-font-size: 12;" text="Artikel">
-               <padding>
-                  <Insets left="65.0" top="30.0" />
-               </padding>
-            </Label>
-            <Label fx:id="button_kampanye" style="-fx-font-family: Gill Sans MT; -fx-font-size: 12;" text="Kampanye">
-               <padding>
-                  <Insets left="65.0" top="30.0" />
-               </padding>
-            </Label>
-            <Button fx:id="button_headerProfil" mnemonicParsing="false" prefHeight="31.0" prefWidth="80.0" style="-fx-background-color: none; -fx-border-radius: 10; -fx-font-weight: bold; -fx-text-fill: black; -fx-font-size: 12; -fx-text-box-border: transparet;" text="Profil">
-               <HBox.margin>
-                  <Insets left="190.0" right="14.0" top="25.0" />
-               </HBox.margin>
-            </Button>
-         </children>
-      </HBox>
-      <Text id="homeName" fx:id="homeName" layoutX="48.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hi, Ikeu!">
-         <font>
-            <Font name="Gill Sans MT Bold" size="24.0" />
-         </font>
-      </Text>
-      <Text layoutX="48.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Apa yang sudah anda lakukan untuk bumi hari ini?">
-         <font>
-            <Font size="13.0" />
-         </font>
-      </Text>
-      <HBox id="boxSlide" fx:id="boxSlide" layoutY="177.0" prefHeight="301.0" prefWidth="807.0">
-         <children>
-            <ImageView fx:id="gambarPageHome" fitHeight="308.0" fitWidth="815.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../image/tanahSubur.png" />
-               </image>
+            <HBox id="header" fx:id="header1" prefHeight="71.0" prefWidth="1280.0" scaleZ="0.0" style="-fx-background-color: E8FFEE;" styleClass="bayangan">
                <effect>
-                  <ColorAdjust brightness="-0.27" />
+                  <DropShadow height="60.0" radius="14.5" width="0.0" />
                </effect>
-            </ImageView>
-         </children>
-      </HBox>
-      <Text layoutX="289.0" layoutY="605.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pilih aksimu hari ini!">
-         <font>
-            <Font name="Gill Sans MT Bold" size="24.0" />
-         </font>
-      </Text>
-      <HBox fx:id="aksi1" fillHeight="false" layoutX="48.0" layoutY="676.0" prefHeight="236.0" prefWidth="156.0" style="-fx-background-color: E8FFEE; -fx-background-radius: 18;" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="670.0">
-         <effect>
-            <DropShadow height="35.0" radius="17.0" width="35.0" />
-         </effect>
-         <children>
-            <ImageView fitHeight="158.0" fitWidth="159.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+               <children>
+                  <ImageView fitHeight="60.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/logo1.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="50.0" top="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label fx:id="button_tentangKami" prefHeight="16.0" prefWidth="90.0" style="-fx-font-family: Gill Sans MT; -fx-font-size: 14;" text="Tentang Kami">
+                     <HBox.margin>
+                        <Insets bottom="15.0" left="150.0" right="50.0" top="27.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label fx:id="button_artikel" prefHeight="21.0" prefWidth="44.0" style="-fx-font-family: Gill Sans MT; -fx-font-size: 14;" text="Artikel">
+                     <HBox.margin>
+                        <Insets bottom="15.0" left="65.0" right="20.0" top="27.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label fx:id="button_kampanye" prefHeight="9.0" prefWidth="66.0" style="-fx-font-family: Gill Sans MT; -fx-font-size: 14;" text="Kampanye">
+                     <HBox.margin>
+                        <Insets bottom="15.0" left="100.0" top="27.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Pane prefHeight="71.0" prefWidth="0.0" />
+               </children>
+            </HBox>
+            <HBox layoutX="-4.0" layoutY="1755.0" prefHeight="89.0" prefWidth="1280.0" style="-fx-background-color: #385f1c;">
+               <children>
+                  <ImageView fitHeight="60.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/logo1.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="50.0" top="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Text fx:id="contactUs1" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold; -fx-font-size: 17;" text="Hubungi Kami :">
+                     <HBox.margin>
+                        <Insets bottom="20.0" left="180.0" top="23.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <ImageView fx:id="fb1" fitHeight="25.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/fb.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets bottom="20.0" left="130.0" top="23.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fx:id="ig1" fitHeight="25.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/ig.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets bottom="20.0" left="15.0" top="23.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fx:id="tw1" fitHeight="25.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/tw.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets bottom="20.0" left="15.0" top="23.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="© 2023 Leaf Link, All Rights Reserved.">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="300.0" right="50.0" top="26.0" />
+                     </HBox.margin>
+                  </Text>
+               </children>
+               <padding>
+                  <Insets bottom="11.0" left="14.0" top="11.0" />
+               </padding>
+            </HBox>
+            <Label fx:id="home_nama" layoutX="66.0" layoutY="102.0" style="-fx-font-size: 30; -fx-font-family: Gill Sans MT; -fx-font-weight: bold;" text="Hi Ikeu!" />
+            <Label layoutX="66.0" layoutY="155.0" style="-fx-font-size: 15; -fx-font-family: Gill Sans MT;" text="Apa yang sudah Anda lakukan untuk bumi hari ini?" />
+            <Label layoutX="472.0" layoutY="787.0" style="-fx-font-size: 30; -fx-font-family: Gill Sans MT; -fx-font-weight: bold;" text="Pilih aksimu hari ini!" />
+            <ImageView fx:id="imgHome_artikel" fitHeight="523.0" fitWidth="1280.0" layoutX="-2.0" layoutY="211.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../image/frame1.png" />
+                  <Image url="@../image/home_tanahSubur.png" />
                </image>
             </ImageView>
-            <ProgressBar prefHeight="20.0" prefWidth="0.0" progress="0.0" />
-         </children>
-      </HBox>
-      <HBox fx:id="aksi2" layoutX="226.0" layoutY="676.0" prefHeight="236.0" prefWidth="156.0" style="-fx-background-color: E8FFEE; -fx-background-radius: 18;" AnchorPane.leftAnchor="240.0" AnchorPane.topAnchor="670.0">
-         <effect>
-            <DropShadow height="35.0" radius="17.0" width="35.0" />
-         </effect>
-         <children>
-            <ImageView fitHeight="165.0" fitWidth="156.0" pickOnBounds="true" preserveRatio="true">
+            <VBox fx:id="box_frame1" layoutX="86.0" layoutY="917.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="385.0" prefWidth="250.0" style="-fx-background-color: E8FFEE; -fx-background-radius: 30;">
+               <children>
+                  <ImageView fx:id="frame1" fitHeight="237.0" fitWidth="260.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/frame1.png" />
+                     </image>
+                  </ImageView>
+                  <HBox prefHeight="69.0" prefWidth="248.0">
+                     <children>
+                        <Text fx:id="judlFrame1" strokeType="OUTSIDE" strokeWidth="0.0" text="Mangkubumi, Tasikmalaya" wrappingWidth="217.69140625">
+                           <font>
+                              <Font name="Gill Sans MT Bold" size="23.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="15.0" right="15.0" top="10.0" />
+                           </HBox.margin>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="28.0" prefWidth="261.0">
+                     <children>
+                        <Text fx:id="penyelenggaraFrame2" fill="#385f1c" strokeType="OUTSIDE" strokeWidth="0.0" text="Penyelenggara: Jejak Hijau" wrappingWidth="240.69140625">
+                           <font>
+                              <Font name="Gill Sans MT" size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="15.0" right="10.0" />
+                           </HBox.margin>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="18.0" prefWidth="261.0">
+                     <children>
+                        <Text fx:id="hariFrame1" fill="#385f1c" strokeType="OUTSIDE" strokeWidth="0.0" text="71 Hari lagi!" wrappingWidth="240.69140625">
+                           <font>
+                              <Font name="Gill Sans MT Bold" size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="15.0" right="10.0" />
+                           </HBox.margin>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="22.0" prefWidth="250.0" />
+               </children>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </VBox>
+            <VBox fx:id="box_frame2" layoutX="374.0" layoutY="917.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="385.0" prefWidth="250.0" style="-fx-background-color: E8FFEE; -fx-background-radius: 30;">
+               <children>
+                  <ImageView fx:id="frame2" fitHeight="241.0" fitWidth="270.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/frame2.png" />
+                     </image>
+                  </ImageView>
+                  <HBox prefHeight="69.0" prefWidth="248.0">
+                     <children>
+                        <Text fx:id="judulFrame2" strokeType="OUTSIDE" strokeWidth="0.0" text="Sangiang Tanjung, Banten" wrappingWidth="218.69140625">
+                           <font>
+                              <Font name="Gill Sans MT Bold" size="23.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="15.0" right="15.0" top="10.0" />
+                           </HBox.margin>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="28.0" prefWidth="261.0">
+                     <children>
+                        <Text fx:id="penyelenggaraFrame2" fill="#385f1c" strokeType="OUTSIDE" strokeWidth="0.0" text="Penyelenggara: Sahabat Alam" wrappingWidth="240.69140625">
+                           <font>
+                              <Font name="Gill Sans MT" size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="15.0" right="10.0" />
+                           </HBox.margin>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="18.0" prefWidth="261.0">
+                     <children>
+                        <Text fx:id="hariFrame2" fill="#385f1c" strokeType="OUTSIDE" strokeWidth="0.0" text="48 Hari Lagi!" wrappingWidth="240.69140625">
+                           <font>
+                              <Font name="Gill Sans MT Bold" size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="15.0" right="10.0" />
+                           </HBox.margin>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="22.0" prefWidth="250.0" />
+               </children>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </VBox>
+            <VBox fx:id="box_frame3" layoutX="657.0" layoutY="917.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="385.0" prefWidth="250.0" style="-fx-background-color: E8FFEE; -fx-background-radius: 30;">
+               <children>
+                  <ImageView fx:id="frame3" fitHeight="237.0" fitWidth="260.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/frame3.png" />
+                     </image>
+                  </ImageView>
+                  <HBox prefHeight="69.0" prefWidth="248.0">
+                     <children>
+                        <Text fx:id="judulFrame3" strokeType="OUTSIDE" strokeWidth="0.0" text="Dusun Cindakko, Sulawesi" wrappingWidth="217.69140625">
+                           <font>
+                              <Font name="Gill Sans MT Bold" size="23.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="15.0" right="15.0" top="10.0" />
+                           </HBox.margin>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="28.0" prefWidth="261.0">
+                     <children>
+                        <Text fx:id="penyelenggaraFrame3" fill="#385f1c" strokeType="OUTSIDE" strokeWidth="0.0" text="Penyelenggara: Jejak Hijau" wrappingWidth="240.69140625">
+                           <font>
+                              <Font name="Gill Sans MT" size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="15.0" right="10.0" />
+                           </HBox.margin>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="18.0" prefWidth="261.0">
+                     <children>
+                        <Text fx:id="hariFrame3" fill="#385f1c" strokeType="OUTSIDE" strokeWidth="0.0" text="36 Hari Lagi!" wrappingWidth="240.69140625">
+                           <font>
+                              <Font name="Gill Sans MT Bold" size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="15.0" right="10.0" />
+                           </HBox.margin>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="22.0" prefWidth="250.0" />
+               </children>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </VBox>
+            <VBox fx:id="box_frame4" layoutX="944.0" layoutY="917.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="385.0" prefWidth="250.0" style="-fx-background-color: E8FFEE; -fx-background-radius: 30;">
+               <children>
+                  <ImageView fx:id="frame4" fitHeight="237.0" fitWidth="260.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/frame4.png" />
+                     </image>
+                  </ImageView>
+                  <HBox prefHeight="69.0" prefWidth="248.0">
+                     <children>
+                        <Text fx:id="judulFrame4" strokeType="OUTSIDE" strokeWidth="0.0" text="Desa Pemuteran, Bali" wrappingWidth="217.69140625">
+                           <font>
+                              <Font name="Gill Sans MT Bold" size="23.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="15.0" right="15.0" top="10.0" />
+                           </HBox.margin>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="28.0" prefWidth="261.0">
+                     <children>
+                        <Text fx:id="penyelenggaraFrame4" fill="#385f1c" strokeType="OUTSIDE" strokeWidth="0.0" text="Penyelenggara: 1001 Mimpi" wrappingWidth="240.69140625">
+                           <font>
+                              <Font name="Gill Sans MT" size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="15.0" right="10.0" />
+                           </HBox.margin>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="18.0" prefWidth="261.0">
+                     <children>
+                        <Text fx:id="hariFrame4" fill="#385f1c" strokeType="OUTSIDE" strokeWidth="0.0" text="22 Hari Lagi!" wrappingWidth="240.69140625">
+                           <font>
+                              <Font name="Gill Sans MT Bold" size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="15.0" right="10.0" />
+                           </HBox.margin>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="22.0" prefWidth="250.0" />
+               </children>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </VBox>
+            <ImageView fx:id="prev" fitHeight="90.0" fitWidth="50.0" layoutX="14.0" layoutY="1062.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../image/frame2.png" />
+                  <Image url="@../image/prev.png" />
                </image>
             </ImageView>
-         </children>
-      </HBox>
-      <HBox fx:id="aksi3" layoutX="413.0" layoutY="676.0" prefHeight="236.0" prefWidth="156.0" style="-fx-background-color: E8FFEE; -fx-background-radius: 18;" AnchorPane.rightAnchor="240.0" AnchorPane.topAnchor="670.0">
-         <effect>
-            <DropShadow height="35.0" radius="17.0" width="35.0" />
-         </effect>
-         <children>
-            <ImageView fx:id="gambarAksi3" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="next" fitHeight="68.0" fitWidth="55.0" layoutX="1216.0" layoutY="1062.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../image/frame3.png" />
+                  <Image url="@../image/next.png" />
                </image>
             </ImageView>
-         </children>
-      </HBox>
-      <HBox fx:id="aksi4" layoutX="595.0" layoutY="676.0" prefHeight="236.0" prefWidth="156.0" style="-fx-background-color: E8FFEE; -fx-background-radius: 18;" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="670.0">
-         <effect>
-            <DropShadow height="35.0" radius="17.0" width="35.0" />
-         </effect>
-         <children>
-            <ImageView fx:id="gambarAksi4" fitHeight="160.0" fitWidth="159.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../image/frame4.png" />
-               </image>
-            </ImageView>
-         </children>
-      </HBox>
-      <ImageView fx:id="prev" fitHeight="40.0" fitWidth="30.0" layoutX="18.0" layoutY="768.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="768.0">
-         <image>
-            <Image url="@../image/prev.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="next" fitHeight="40.0" fitWidth="30.0" layoutX="765.0" layoutY="768.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="768.0">
-         <image>
-            <Image url="@../image/next.png" />
-         </image>
-      </ImageView>
-      <Text layoutX="271.0" layoutY="1040.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jadilah bagian dari kami!">
-         <font>
-            <Font name="Gill Sans MT Bold" size="24.0" />
-         </font>
-      </Text>
-      <Label fx:id="jml_donasi" layoutX="155.0" layoutY="1087.0" text=" 10,2 Jt" AnchorPane.leftAnchor="155.0" AnchorPane.rightAnchor="531.0" AnchorPane.topAnchor="1087.0">
-         <font>
-            <Font name="Gill Sans MT Bold" size="40.0" />
-         </font>
-      </Label>
-      <Label layoutX="180.0" layoutY="1155.0" text="Donasi terkumpul" AnchorPane.topAnchor="1155.0">
-         <font>
-            <Font size="13.0" />
-         </font>
-      </Label>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#385f1c" height="7.0" layoutX="376.0" layoutY="1140.0" stroke="BLACK" strokeType="INSIDE" width="95.0" AnchorPane.topAnchor="1140.0" />
-      <Label layoutX="395.0" layoutY="1155.0" text="Volunteer" AnchorPane.topAnchor="1155.0">
-         <font>
-            <Font size="13.0" />
-         </font>
-      </Label>
-      <Label layoutX="563.0" layoutY="1155.0" text="Kampanye" AnchorPane.topAnchor="1155.0">
-         <font>
-            <Font size="13.0" />
-         </font>
-      </Label>
-      <Label fx:id="jml_volunteer" layoutX="401.0" layoutY="1087.0" text="51" AnchorPane.topAnchor="1087.0">
-         <font>
-            <Font name="Gill Sans MT Bold" size="40.0" />
-         </font>
-      </Label>
-      <Label fx:id="jml_kampanye" layoutX="577.0" layoutY="1087.0" text="8" AnchorPane.rightAnchor="210.0" AnchorPane.topAnchor="1087.0">
-         <font>
-            <Font name="Gill Sans MT Bold" size="40.0" />
-         </font>
-      </Label>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#385f1c" height="7.0" layoutX="541.0" layoutY="1140.0" stroke="BLACK" strokeType="INSIDE" width="95.0" AnchorPane.rightAnchor="174.0" AnchorPane.topAnchor="1140.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#385f1c" height="7.0" layoutX="160.0" layoutY="1137.0" stroke="BLACK" strokeType="INSIDE" width="142.0" AnchorPane.topAnchor="1140.0" />
-      <HBox layoutY="1284.0" prefHeight="80.0" prefWidth="815.0" style="-fx-background-color: #385f1c;">
-         <children>
-            <ImageView fitHeight="45.0" fitWidth="220.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../image/logo1.png" />
-               </image>
-               <HBox.margin>
-                  <Insets bottom="10.0" left="14.0" top="10.0" />
-               </HBox.margin>
-            </ImageView>
-            <Text fx:id="contactUs" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold; -fx-font-size: 17;" text="Contact Us :">
-               <HBox.margin>
-                  <Insets bottom="20.0" left="140.0" top="23.0" />
-               </HBox.margin>
+            <Label layoutX="459.0" layoutY="1394.0" style="-fx-font-size: 30; -fx-font-family: Gill Sans MT; -fx-font-weight: bold;" text="Jadilah bagian dari kami!" />
+            <Label fx:id="jml_donasi" layoutX="284.0" layoutY="1504.0" text=" 10,2 Jt">
                <font>
-                  <Font size="15.0" />
+                  <Font name="Gill Sans MT Bold" size="50.0" />
                </font>
-            </Text>
-            <ImageView fx:id="fb" fitHeight="25.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../image/fb.png" />
-               </image>
-               <HBox.margin>
-                  <Insets bottom="20.0" left="60.0" top="23.0" />
-               </HBox.margin>
-            </ImageView>
-            <ImageView fx:id="ig" fitHeight="25.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../image/ig.png" />
-               </image>
-               <HBox.margin>
-                  <Insets bottom="20.0" left="10.0" top="23.0" />
-               </HBox.margin>
-            </ImageView>
-            <ImageView fx:id="tw" fitHeight="25.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../image/tw.png" />
-               </image>
-               <HBox.margin>
-                  <Insets bottom="20.0" left="10.0" top="23.0" />
-               </HBox.margin>
-            </ImageView>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="© 2023 Leaf Link, All Rights Reserved.">
+            </Label>
+            <Label fx:id="jml_volunteer" layoutX="608.0" layoutY="1504.0" text="51">
                <font>
-                  <Font size="10.0" />
+                  <Font name="Gill Sans MT Bold" size="50.0" />
                </font>
-               <HBox.margin>
-                  <Insets left="48.0" right="14.0" top="26.0" />
-               </HBox.margin>
-            </Text>
+            </Label>
+            <Label fx:id="jml_kampanye" layoutX="847.0" layoutY="1504.0" text="8">
+               <font>
+                  <Font name="Gill Sans MT Bold" size="50.0" />
+               </font>
+            </Label>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#385f1c" height="7.0" layoutX="303.0" layoutY="1574.0" stroke="BLACK" strokeType="INSIDE" width="142.0" />
+            <Label layoutX="296.0" layoutY="1589.0" text="Donasi terkumpul">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="595.0" layoutY="1589.0" text="Volunteer">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="814.0" layoutY="1589.0" text="Kampanye">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#385f1c" height="7.0" layoutX="585.0" layoutY="1575.0" stroke="BLACK" strokeType="INSIDE" width="102.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#385f1c" height="7.0" layoutX="810.0" layoutY="1574.0" stroke="BLACK" strokeType="INSIDE" width="102.0" />
+            <Pane layoutX="20.0" layoutY="20.0" prefHeight="80.0" prefWidth="673.0" />
+            <ImageView fx:id="logout" fitHeight="28.0" fitWidth="25.0" layoutX="1204.0" layoutY="23.0" onMouseClicked="#logout" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/log-out.png" />
+               </image>
+            </ImageView>
+            <Pane fx:id="dashboard" layoutX="1063.0" layoutY="17.0" onMouseClicked="#goToDashboard" prefHeight="40.0" prefWidth="123.0" style="-fx-border-color: black; -fx-background-radius: 10; -fx-border-radius: 10;">
+               <children>
+                  <Label layoutX="27.0" layoutY="10.0" text="Dashboard">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
          </children>
-         <padding>
-            <Insets bottom="11.0" left="14.0" top="11.0" />
-         </padding>
-      </HBox>
-      <Circle fill="#385f1c" layoutX="376.0" layoutY="503.0" radius="9.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fill="WHITE" layoutX="437.0" layoutY="503.0" radius="9.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fill="WHITE" layoutX="408.0" layoutY="503.0" radius="9.0" stroke="BLACK" strokeType="INSIDE" />
-      <Label layoutX="84.0" layoutY="552.0" text="Penyelenggara: Jejak Hijau" textFill="#385f1c">
-         <font>
-            <Font size="13.0" />
-         </font>
-      </Label>
-      <Label layoutX="94.0" layoutY="562.0" text="Penyelenggara: Jejak Hijau" textFill="#385f1c">
-         <font>
-            <Font size="13.0" />
-         </font>
-      </Label>
-      <Label layoutX="94.0" layoutY="587.0" text="71 Hari Lagi!" textFill="#385f1c">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </Label>
-      <Text id="homeName" fx:id="homeName1" layoutX="623.0" layoutY="560.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mangkubumi, Tasikmalaya" wrappingWidth="101.99999064207077">
-         <font>
-            <Font name="Gill Sans MT Bold" size="15.0" />
-         </font>
-      </Text>
-   </children>
-</AnchorPane>
+      </Pane>
+   </content>
+</ScrollPane>

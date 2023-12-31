@@ -164,6 +164,7 @@ public class LoginController implements Initializable {
                     URL url = new File("src/main/java/view/Home.fxml").toURI().toURL();
                     Parent root = FXMLLoader.load(url);
                     Scene scene = new Scene(root);
+                    stage.setTitle("Leaf Link");
                     stage.setScene(scene);
                 } else {
                     JOptionPane.showMessageDialog(null, "INVALID EMAIL/KATA SANDI!!!");

@@ -64,6 +64,7 @@ public class DaftarSebagaiController implements Initializable {
             URL url = new File("src/main/java/view/Personal.fxml").toURI().toURL();
             Parent root = FXMLLoader.load(url);
             Scene scene = new Scene(root);
+            stage.setTitle("Leaf Link");
             stage.setScene(scene);
        } catch (HeadlessException | IOException e) {
             e.printStackTrace();
@@ -77,6 +78,7 @@ public class DaftarSebagaiController implements Initializable {
             URL url = new File("src/main/java/view/Organisasi.fxml").toURI().toURL();
             Parent root = FXMLLoader.load(url);
             Scene scene = new Scene(root);
+            stage.setTitle("Leaf Link");
             stage.setScene(scene);
         }catch(HeadlessException | IOException e) {
             e.printStackTrace();
@@ -90,6 +92,7 @@ public class DaftarSebagaiController implements Initializable {
             URL url = new File("src/main/java/view/Landing.fxml").toURI().toURL();
             Parent root = FXMLLoader.load(url);
             Scene scene = new Scene(root);
+            stage.setTitle("Leaf Link");
             stage.setScene(scene);
         } catch (MalformedURLException ex) {
             Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);

@@ -16,6 +16,24 @@ public class Artikel {
     private String judul;
     private String isi;
     private Organisasi author;
+    private byte[] dataGambar;
+
+    public Artikel(UUID idArtikel, String judul, String isi, Organisasi author, byte[] dataGambar) {
+        this.idArtikel = idArtikel;
+        this.judul = judul;
+        this.isi = isi;
+        this.author = author;
+        this.dataGambar = dataGambar;
+    }
+
+    public Artikel(String judul, String isi, Organisasi author, byte[] dataGambar) {
+        UUID uuid = UUID.randomUUID();
+        setIdArtikel(uuid);
+        this.judul = judul;
+        this.isi = isi;
+        this.author = author;
+        this.dataGambar = dataGambar;
+    }
     
     public Artikel(UUID uuid, String judul, String konten, Organisasi author) {
         setIdArtikel(uuid);
@@ -23,6 +41,7 @@ public class Artikel {
         this.isi = konten;
         this.author = author;
     }
+    
     
     public Artikel(String judul, String konten) {
         UUID uuid = UUID.randomUUID();
@@ -89,6 +108,16 @@ public class Artikel {
     private UUID setIdArtikel(UUID idArtikel){
         return this.idArtikel=idArtikel;
     }
+
+    public byte[] getDataGambar() {
+        return dataGambar;
+    }
+
+    public void setDataGambar(byte[] dataGambar) {
+        this.dataGambar = dataGambar;
+    }
+    
+    
 
     @Override
     public String toString(){

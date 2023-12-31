@@ -29,6 +29,7 @@ public class Leaflink extends Application {
        Parent root = FXMLLoader.load(url);
        Scene scene = new Scene(root);        
        stage.centerOnScreen();
+       stage.setTitle("Leaf Link");
        stage.setScene(scene);
        stage.show();
     }

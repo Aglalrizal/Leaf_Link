@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: E8FFEE;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PersonalDashboardRiwayatVolunteerController">
+   <children>
+      <AnchorPane id="AnchorPane" fx:id="page_riwayatKampanye" prefHeight="0.0" prefWidth="800.0" style="-fx-background-color: E8FFEE;">
+         <children>
+            <Pane layoutY="-1.0" prefHeight="726.0" prefWidth="201.0" style="-fx-background-color: D5FFDB;">
+               <children>
+                  <HBox fx:id="button_profil" layoutY="73.0" prefHeight="47.0" prefWidth="201.0" style="-fx-background-color: none;">
+                     <children>
+                        <ImageView fitHeight="40.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/profil.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="10.0" top="10.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Profil">
+                           <font>
+                              <Font name="Gill Sans MT" size="17.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" top="16.0" />
+                           </HBox.margin>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <HBox fx:id="riwayatVolunteer" layoutY="123.0" prefHeight="47.0" prefWidth="201.0" style="-fx-background-color: #19A914;">
+                     <children>
+                        <ImageView fitHeight="40.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/riwayatKampanye.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="10.0" top="10.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Text fx:id="butttonRiwayat_PageKampanye" strokeType="OUTSIDE" strokeWidth="0.0" text="Riwayat Volunteer">
+                           <font>
+                              <Font name="Gill Sans MT" size="17.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="5.0" top="16.0" />
+                           </HBox.margin>
+                        </Text>
+                     </children>
+                  </HBox>
+               </children>
+            </Pane>
+            <Text layoutX="293.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+            <Text layoutX="367.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Riwayat Volunteer Yang Sudah diikuti" AnchorPane.leftAnchor="360.0" AnchorPane.topAnchor="105.0">
+               <font>
+                  <Font name="Gill Sans MT" size="30.0" />
+               </font>
+            </Text>
+            <TableView fx:id="tabel" layoutX="360.0" layoutY="161.0" prefHeight="479.0" prefWidth="794.0" style="-fx-background-color: transparent;" />
+            <HBox layoutY="688.0" prefHeight="88.0" prefWidth="1323.0" style="-fx-background-color: #385f1c;">
+               <children>
+                  <ImageView fitHeight="60.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/logo1.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="50.0" top="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Text fx:id="contactUs" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold; -fx-font-size: 17;" text="Hubungi Kami :">
+                     <HBox.margin>
+                        <Insets bottom="20.0" left="180.0" top="23.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <ImageView fx:id="fb" fitHeight="25.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/fb.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets bottom="20.0" left="130.0" top="23.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fx:id="ig" fitHeight="25.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/ig.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets bottom="20.0" left="15.0" top="23.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fx:id="tw" fitHeight="25.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/tw.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets bottom="20.0" left="15.0" top="23.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="© 2023 Leaf Link, All Rights Reserved.">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="310.0" right="50.0" top="26.0" />
+                     </HBox.margin>
+                  </Text>
+               </children>
+               <padding>
+                  <Insets bottom="11.0" left="14.0" top="11.0" />
+               </padding>
+            </HBox>
+         </children>
+      </AnchorPane>
+      <HBox id="header" fx:id="header" layoutX="-7.0" prefHeight="71.0" prefWidth="1330.0" style="-fx-background-color: E8FFEE;" styleClass="bayangan">
+         <effect>
+            <DropShadow height="60.0" radius="14.5" width="0.0" />
+         </effect>
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+         <children>
+            <ImageView fitHeight="60.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/logo1.png" />
+               </image>
+               <HBox.margin>
+                  <Insets bottom="10.0" left="50.0" top="10.0" />
+               </HBox.margin>
+            </ImageView>
+            <Label fx:id="button_tentangKami" prefHeight="16.0" prefWidth="90.0" style="-fx-font-family: Gill Sans MT; -fx-font-size: 14;" text="Tentang Kami">
+               <HBox.margin>
+                  <Insets bottom="15.0" left="150.0" right="50.0" top="27.0" />
+               </HBox.margin>
+            </Label>
+            <Label fx:id="button_artikel" prefHeight="21.0" prefWidth="44.0" style="-fx-font-family: Gill Sans MT; -fx-font-size: 14;" text="Artikel">
+               <HBox.margin>
+                  <Insets bottom="15.0" left="65.0" right="20.0" top="27.0" />
+               </HBox.margin>
+            </Label>
+            <Label fx:id="button_kampanye" prefHeight="9.0" prefWidth="66.0" style="-fx-font-family: Gill Sans MT; -fx-font-size: 14;" text="Kampanye">
+               <HBox.margin>
+                  <Insets bottom="15.0" left="100.0" top="27.0" />
+               </HBox.margin>
+            </Label>
+         </children>
+      </HBox>
+      <ImageView fx:id="logout" fitHeight="28.0" fitWidth="25.0" layoutX="1183.0" layoutY="24.0" onMouseClicked="#logout" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../projects/pbo/Leaf_Link/src/main/java/image/log-out.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

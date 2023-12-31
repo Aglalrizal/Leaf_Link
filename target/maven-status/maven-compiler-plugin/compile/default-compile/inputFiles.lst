@@ -1,3 +1,4 @@
+C:\Users\rizal\projects\pbo\Leaf_Link\src\main\java\controller\PersonalDashboardRiwayatVolunteerController.java
 C:\Users\rizal\projects\pbo\Leaf_Link\src\main\java\model\Artikel.java
 C:\Users\rizal\projects\pbo\Leaf_Link\src\main\java\controller\Campaign4Controller.java
 C:\Users\rizal\projects\pbo\Leaf_Link\src\main\java\main\Leaflink.java
@@ -11,6 +12,9 @@ C:\Users\rizal\projects\pbo\Leaf_Link\src\main\java\utils\DonasiDAO.java
 C:\Users\rizal\projects\pbo\Leaf_Link\src\main\java\controller\Campaign3Controller.java
 C:\Users\rizal\projects\pbo\Leaf_Link\src\main\java\controller\ProfilPageRiwayatKampanyeController.java
 C:\Users\rizal\projects\pbo\Leaf_Link\src\main\java\controller\HomeController.java
+C:\Users\rizal\projects\pbo\Leaf_Link\src\main\java\controller\OrganisasiDashboardProfilController.java
+C:\Users\rizal\projects\pbo\Leaf_Link\src\main\java\controller\OrganisasiDashboardBuatArtikelController.java
+C:\Users\rizal\projects\pbo\Leaf_Link\src\main\java\controller\OrganisasiDashboardArtikelController.java
 C:\Users\rizal\projects\pbo\Leaf_Link\src\main\java\controller\PersonalController.java
 C:\Users\rizal\projects\pbo\Leaf_Link\src\main\java\main\Main.java
 C:\Users\rizal\projects\pbo\Leaf_Link\src\main\java\utils\UserDAO.java
@@ -27,7 +31,9 @@ C:\Users\rizal\projects\pbo\Leaf_Link\src\main\java\model\Kampanye.java
 C:\Users\rizal\projects\pbo\Leaf_Link\src\main\java\utils\PersonalDAO.java
 C:\Users\rizal\projects\pbo\Leaf_Link\src\main\java\controller\Campaign2Controller.java
 C:\Users\rizal\projects\pbo\Leaf_Link\src\main\java\controller\DaftarSebagaiController.java
+C:\Users\rizal\projects\pbo\Leaf_Link\src\main\java\controller\OrganisasiDashboardKampanyeController.java
 C:\Users\rizal\projects\pbo\Leaf_Link\src\main\java\utils\BaseDAO.java
+C:\Users\rizal\projects\pbo\Leaf_Link\src\main\java\controller\PersonalDashboardProfilController.java
 C:\Users\rizal\projects\pbo\Leaf_Link\src\main\java\model\Admin.java
 C:\Users\rizal\projects\pbo\Leaf_Link\src\main\java\controller\TentangKamiController.java
 C:\Users\rizal\projects\pbo\Leaf_Link\src\main\java\controller\Campaign1Controller.java

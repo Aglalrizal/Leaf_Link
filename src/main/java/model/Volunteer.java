@@ -15,11 +15,13 @@ public class Volunteer {
     private UUID idVolunteer;
     private Personal relawan;
     private Kampanye kampanye;
+    private String namaKampanye;
 
     public Volunteer(UUID idVolunteer, Personal relawan, Kampanye kampanye) {
         this.idVolunteer = idVolunteer;
         this.relawan = relawan;
-        this.kampanye = kampanye;
+        this.kampanye = kampanye; 
+        setNamaKampanye(kampanye.getNama());
     }
 
     public Volunteer(Personal relawan, Kampanye kampanye) {
@@ -27,7 +29,9 @@ public class Volunteer {
         setIdVolunteer(uuid);
         this.relawan = relawan;
         this.kampanye = kampanye;
+        setNamaKampanye(kampanye.getNama());
     }
+    
 
     public UUID getIdVolunteer() {
         return idVolunteer;
@@ -52,4 +56,14 @@ public class Volunteer {
     public void setKampanye(Kampanye kampanye) {
         this.kampanye = kampanye;
     }
+
+    public String getNamaKampanye() {
+        return namaKampanye;
+    }
+
+    public void setNamaKampanye(String namaKampanye) {
+        this.namaKampanye = namaKampanye;
+    }
+    
+    
 }

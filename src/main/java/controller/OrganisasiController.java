@@ -115,6 +115,7 @@ public class OrganisasiController implements Initializable {
             URL url = new File("src/main/java/view/Login.fxml").toURI().toURL();
             Parent root = FXMLLoader.load(url);
             Scene scene = new Scene(root);
+            stage.setTitle("Leaf Link");
             stage.setScene(scene);
         } catch (IOException e) {
             e.printStackTrace();
@@ -156,6 +157,7 @@ public class OrganisasiController implements Initializable {
             URL url = new File("src/main/java/view/DaftarSebagai.fxml").toURI().toURL();
             Parent root = FXMLLoader.load(url);
             Scene scene = new Scene(root);
+            stage.setTitle("Leaf Link");
             stage.setScene(scene);
         } catch (MalformedURLException ex) {
             Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
