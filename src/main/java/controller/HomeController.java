@@ -5,10 +5,15 @@
 package controller;
 
 import controller.LoginController;
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,6 +29,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
@@ -31,6 +37,13 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import model.Artikel;
+import model.Kampanye;
+import model.Volunteer;
+import utils.ArtikelDAO;
+import utils.DonasiDAO;
+import utils.KampanyeDAO;
+import utils.VolunteerDAO;
 
 /**
  * FXML Controller class
@@ -38,13 +51,14 @@ import javafx.stage.Stage;
  * @author rizal
  */
 public class HomeController implements Initializable {
+    
+    public static Artikel a;
+    public static Kampanye k;
 
     @FXML
     private ScrollPane page_home;
     @FXML
     private HBox header1;
-    @FXML
-    private Label button_tentangKami;
     @FXML
     private Label button_artikel;
     @FXML
@@ -60,50 +74,6 @@ public class HomeController implements Initializable {
     @FXML
     private Label home_nama;
     @FXML
-    private ImageView imgHome_artikel;
-    @FXML
-    private VBox box_frame1;
-    @FXML
-    private ImageView frame1;
-    @FXML
-    private Text judlFrame1;
-    @FXML
-    private Text penyelenggaraFrame2;
-    @FXML
-    private Text hariFrame1;
-    @FXML
-    private VBox box_frame2;
-    @FXML
-    private ImageView frame2;
-    @FXML
-    private Text judulFrame2;
-    @FXML
-    private Text hariFrame2;
-    @FXML
-    private VBox box_frame3;
-    @FXML
-    private ImageView frame3;
-    @FXML
-    private Text judulFrame3;
-    @FXML
-    private Text penyelenggaraFrame3;
-    @FXML
-    private Text hariFrame3;
-    @FXML
-    private VBox box_frame4;
-    @FXML
-    private ImageView frame4;
-    @FXML
-    private Text judulFrame4;
-    @FXML
-    private Text penyelenggaraFrame4;
-    @FXML
-    private Text hariFrame4;
-    @FXML
-    private ImageView prev;
-    @FXML
-    private ImageView next;
-    @FXML
     private Label jml_donasi;
     @FXML
     private Label jml_volunteer;
@@ -113,6 +83,13 @@ public class HomeController implements Initializable {
     private ImageView logout;
     @FXML
     private Pane dashboard;
+    @FXML
+    private ImageView imgArtikel;
+    @FXML
+    private Label txtJudulArtikel;
+    
+    @FXML
+    private Label button_home;
 
     /**
      * Initializes the controller class.
@@ -120,19 +97,35 @@ public class HomeController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        if(null != LoginController.selectedRole)
-            switch (LoginController.selectedRole) {
-            case "personal":
-                home_nama.setText("Hai, "+MainController.p.getUsername()+"!");
-                break;
-            case "organisasi":
-                home_nama.setText("Hai, "+MainController.o.getUsername()+"!");
-                break;
-            case "admin":
-                break;
-            default:
-                break;
+        if(null != LoginController.selectedRole){
+                switch (LoginController.selectedRole) {
+                case "personal":
+                    home_nama.setText("Hai, "+MainController.p.getUsername()+"!");
+                    break;
+                case "organisasi":
+                    home_nama.setText("Hai, "+MainController.o.getUsername()+"!");
+                    break;
+                case "admin":
+                    break;
+                default:
+                    break;
+            }
         }
+        k = null;
+        a = ArtikelDAO.getLatest();
+        txtJudulArtikel.setText(a.getJudul());
+        ByteArrayInputStream inputStream = new ByteArrayInputStream(a.getDataGambar());
+        Image image = new Image(inputStream);
+        imgArtikel.setImage(image);
+        
+        ArrayList<Kampanye> allKampanye = KampanyeDAO.getAll();
+        ArrayList<Volunteer> allVolunteer = VolunteerDAO.getAll();
+        
+        jml_kampanye.setText(String.valueOf(allKampanye.size()));
+        jml_donasi.setText(String.valueOf(DonasiDAO.totalDonasiAll()));
+        jml_volunteer.setText(String.valueOf(allVolunteer.size())); 
+        
+        
     }    
 
     @FXML
@@ -162,7 +155,7 @@ public class HomeController implements Initializable {
     private void goToDashboard(MouseEvent event) throws IOException {
         if("personal".equals(LoginController.selectedRole)){
             try {
-            Stage stage = (Stage) logout.getScene().getWindow();
+            Stage stage = (Stage) page_home.getScene().getWindow();
             URL url = new File("src/main/java/view/PersonalDashboardProfil.fxml").toURI().toURL();
             Parent root = FXMLLoader.load(url);
             Scene scene = new Scene(root);
@@ -173,7 +166,7 @@ public class HomeController implements Initializable {
             }
         }else if("organisasi".equals(LoginController.selectedRole)){
             try {
-            Stage stage = (Stage) logout.getScene().getWindow();
+            Stage stage = (Stage) page_home.getScene().getWindow();
             URL url = new File("src/main/java/view/OrganisasiDashboardProfil.fxml").toURI().toURL();
             Parent root = FXMLLoader.load(url);
             Scene scene = new Scene(root);
@@ -182,8 +175,64 @@ public class HomeController implements Initializable {
             } catch (MalformedURLException ex) {
                 Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }else if("admin".equals(LoginController.selectedRole)){
-            
+        }
+    }
+
+    @FXML
+    private void showArtikel(MouseEvent event) throws IOException {
+        try {
+            Stage stage = (Stage) imgArtikel.getScene().getWindow();
+                        URL url = new File("src/main/java/view/ShowArtikel.fxml").toURI().toURL();
+                        FXMLLoader loader = new FXMLLoader(url);
+                        Parent root = loader.load();
+                        ShowArtikelController controller = loader.getController();
+                        controller.setData(a);
+                        Scene scene = new Scene(root);
+                        stage.setScene(scene);
+            } catch (MalformedURLException ex) {
+                Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void goToHome(MouseEvent event) throws IOException {
+        try {
+            Stage stage = (Stage) button_home.getScene().getWindow();
+            URL url = new File("src/main/java/view/Home.fxml").toURI().toURL();
+            Parent root = FXMLLoader.load(url);
+            Scene scene = new Scene(root);
+            stage.setTitle("Leaf Link");
+            stage.setScene(scene);
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void goToArtikel(MouseEvent event) throws IOException {
+        try {
+            Stage stage = (Stage) button_artikel.getScene().getWindow();
+            URL url = new File("src/main/java/view/ArtikelHome.fxml").toURI().toURL();
+            Parent root = FXMLLoader.load(url);
+            Scene scene = new Scene(root);
+            stage.setTitle("Leaf Link");
+            stage.setScene(scene);
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void goToKampanye(MouseEvent event) throws IOException {
+        try {
+            Stage stage = (Stage) button_kampanye.getScene().getWindow();
+            URL url = new File("src/main/java/view/KampanyeHome.fxml").toURI().toURL();
+            Parent root = FXMLLoader.load(url);
+            Scene scene = new Scene(root);
+            stage.setTitle("Leaf Link");
+            stage.setScene(scene);
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

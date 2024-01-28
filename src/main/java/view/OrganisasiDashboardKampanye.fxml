@@ -3,8 +3,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
@@ -19,7 +17,7 @@
    <children>
       <Pane layoutY="-1.0" prefHeight="726.0" prefWidth="201.0" style="-fx-background-color: D5FFDB;">
          <children>
-            <HBox fx:id="buttonProfil" layoutY="73.0" onMouseClicked="#goToProfil" prefHeight="47.0" prefWidth="201.0" style="-fx-background-color: none;">
+            <HBox fx:id="buttonProfil" layoutY="73.0" onMouseClicked="#goToProfil" prefHeight="47.0" prefWidth="201.0">
                <children>
                   <ImageView fitHeight="40.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -100,21 +98,6 @@
                   <Insets bottom="10.0" left="50.0" top="10.0" />
                </HBox.margin>
             </ImageView>
-            <Label fx:id="button_tentangKami" prefHeight="16.0" prefWidth="90.0" style="-fx-font-family: Gill Sans MT; -fx-font-size: 14;" text="Tentang Kami">
-               <HBox.margin>
-                  <Insets bottom="15.0" left="150.0" right="50.0" top="27.0" />
-               </HBox.margin>
-            </Label>
-            <Label fx:id="button_artikel" prefHeight="21.0" prefWidth="44.0" style="-fx-font-family: Gill Sans MT; -fx-font-size: 14;" text="Artikel">
-               <HBox.margin>
-                  <Insets bottom="15.0" left="65.0" right="20.0" top="27.0" />
-               </HBox.margin>
-            </Label>
-            <Label fx:id="button_kampanye" prefHeight="9.0" prefWidth="66.0" style="-fx-font-family: Gill Sans MT; -fx-font-size: 14;" text="Kampanye">
-               <HBox.margin>
-                  <Insets bottom="15.0" left="100.0" top="27.0" />
-               </HBox.margin>
-            </Label>
          </children>
       </HBox>
       <HBox layoutX="-4.0" layoutY="630.0" prefHeight="47.0" prefWidth="1287.0" style="-fx-background-color: #385f1c;">
@@ -187,10 +170,6 @@
             <Font name="System Bold" size="28.0" />
          </font>
       </Text>
-      <TableView fx:id="table" layoutX="245.0" layoutY="202.0" prefHeight="394.0" prefWidth="957.0">
-        <columns>
-          <TableColumn prefWidth="182.0" text="Judul Kampanye" />
-        </columns>
-      </TableView>
+      <TableView fx:id="table" layoutX="245.0" layoutY="202.0" prefHeight="394.0" prefWidth="957.0" />
    </children>
 </AnchorPane>

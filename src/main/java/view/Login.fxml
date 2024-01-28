@@ -54,11 +54,6 @@
                   <Font size="13.0" />
                </font>
             </RadioButton>
-            <RadioButton fx:id="adminRadioBtn" layoutX="658.0" layoutY="289.0" mnemonicParsing="false" onAction="#chooseRole" text="Admin" toggleGroup="$role">
-               <font>
-                  <Font size="13.0" />
-               </font>
-            </RadioButton>
             <PasswordField fx:id="login_kataSandi" layoutX="443.0" layoutY="231.0" prefHeight="40.0" prefWidth="295.0" style="-fx-background-color: EDF2F7; -fx-background-radius: 10;">
                <font>
                   <Font size="15.0" />

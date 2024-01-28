@@ -47,10 +47,6 @@ import utils.ArtikelDAO;
 public class OrganisasiDashboardBuatArtikelController implements Initializable {
 
     @FXML
-    private AnchorPane page_profil;
-    @FXML
-    private HBox butttonProfil_PageKampanye;
-    @FXML
     private HBox daftarKampanye;
     @FXML
     private Button backToHomeBtn;
@@ -90,6 +86,10 @@ public class OrganisasiDashboardBuatArtikelController implements Initializable {
     private TextArea txtIsi;
     @FXML
     private TextField txtJudul;
+    @FXML
+    private AnchorPane buatArtikelPage;
+    @FXML
+    private HBox buttonProfil;
 
     /**
      * Initializes the controller class.
@@ -108,7 +108,7 @@ public class OrganisasiDashboardBuatArtikelController implements Initializable {
         return !text.trim().isEmpty();
     }
     
-    public byte[] getImageDataFromImageView(ImageView imageView) {
+    public byte[] getImageData(ImageView imageView) {
         Image image = imageView.getImage();
     
         if (image != null) {
@@ -124,8 +124,6 @@ public class OrganisasiDashboardBuatArtikelController implements Initializable {
 
             return baos.toByteArray();
         } else {
-            // Jika ImageView kosong, tampilkan pesan atau lakukan tindakan lain sesuai kebutuhan
-            System.out.println("Tidak ada gambar di ImageView.");
             return null;
         }
     }
@@ -205,7 +203,7 @@ public class OrganisasiDashboardBuatArtikelController implements Initializable {
 
     @FXML
     private void saveArtikel(ActionEvent event) throws IOException {
-        byte[] dataGambar = getImageDataFromImageView(imgView);
+        byte[] dataGambar = getImageData(imgView);
         if(isInputValid()&& dataGambar!=null){
            try{
             Artikel a = new Artikel(txtJudul.getText(), txtIsi.getText(), MainController.o, dataGambar);
@@ -217,7 +215,7 @@ public class OrganisasiDashboardBuatArtikelController implements Initializable {
                     successAlert.showAndWait();
                 try {
                     Stage stage = (Stage) saveBtn.getScene().getWindow();
-                    URL url = new File("src/main/java/view/OrganisasiDashboardKampanye.fxml").toURI().toURL();
+                    URL url = new File("src/main/java/view/OrganisasiDashboardArtikel.fxml").toURI().toURL();
                     Parent root = FXMLLoader.load(url);
                     Scene scene = new Scene(root);
                     stage.setTitle("Leaf Link");
@@ -238,49 +236,15 @@ public class OrganisasiDashboardBuatArtikelController implements Initializable {
     private void uploadImage(ActionEvent event) throws MalformedURLException {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Pilih gambar terbaik untuk artikelmu!");
-        //fileChooser.setInitialDirectory(new File(System.getProperty("user.home")+ "/Desktop"));
         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("JPEG Image","*.jpg"), new FileChooser.ExtensionFilter("PNG Image", "*.png"), new FileChooser.ExtensionFilter("All image files","*.jpg","*.png"));
-        //fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Text file","*.txt"));
-        // this is for saving a file. remove the setInitialFileName if you are opening a file
-        //fileChooser.setInitialFileName("Untitled");
-        //File selectedFile = fileChooser.showOpenDialog(stage);
         Stage stage = (Stage) uploadBtn.getScene().getWindow();
         File selectedFile = fileChooser.showOpenDialog(stage);
         if(selectedFile != null){
-
-                // this is for saving a file
-                /*try {
-                    FileWriter fileWriter = new FileWriter(selectedFile);
-                    BufferedWriter writer = new BufferedWriter(fileWriter);
-                    writer.write("Learning how to use the JavaFX FileChooser");
-                    writer.close();
-                    System.out.println("The file has been saved in "+ selectedFile.getAbsolutePath());
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }*/
-
-                    //this is for opening a file
-                    labelImgView.setText("");
-                    nama.setText(selectedFile.getName());
-                    String imagePath = selectedFile.toURI().toURL().toString();
-                    Image image = new Image(imagePath);
-                    imgView.setImage(image);
-
-
-                    /* This is for reading a text file
-                    try {
-                        BufferedReader bufferedReader = new BufferedReader(new FileReader(selectedFile));
-                        StringBuilder stringBuilder = new StringBuilder();
-                        String line;
-                        while((line = bufferedReader.readLine()) != null){
-                            stringBuilder.append(line).append("\n");
-                        }
-                        System.out.println(stringBuilder.toString());
-                    } catch (FileNotFoundException e) {
-                        throw new RuntimeException(e);
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }*/
+            labelImgView.setText("");
+            nama.setText(selectedFile.getName());
+            String imagePath = selectedFile.toURI().toURL().toString();
+            Image image = new Image(imagePath);
+            imgView.setImage(image);
         }else{
             System.out.println("No file has been selected");
         }
@@ -306,6 +270,20 @@ public class OrganisasiDashboardBuatArtikelController implements Initializable {
             } catch (MalformedURLException ex) {
                 Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
             }
+        }
+    }
+
+    @FXML
+    private void goToProfil(MouseEvent event) throws IOException {
+        try {
+            Stage stage = (Stage) logout.getScene().getWindow();
+            URL url = new File("src/main/java/view/OrganisasiDashboardProfil.fxml").toURI().toURL();
+            Parent root = FXMLLoader.load(url);
+            Scene scene = new Scene(root);
+            stage.setTitle("Leaf Link");
+            stage.setScene(scene);
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     

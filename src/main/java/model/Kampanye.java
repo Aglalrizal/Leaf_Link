@@ -5,7 +5,7 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Date;
 import java.util.Scanner;
 import java.util.UUID;
 
@@ -18,64 +18,39 @@ public class Kampanye {
     private String lokasi;
     private long targetPendanaan;
     private long sumbangan;
+    private Date tanggalPenanaman;
+    private String jenisPohon;
+    private Date batasDonasi;
+    private byte[] dataGambar;
     private Organisasi penyelenggara;
-    public Kampanye(){
-        Scanner scanner = new Scanner(System.in);
-        UUID uuid = UUID.randomUUID();
-        setIdKampanye(uuid);
-        System.out.println("Nama: ");
-        this.nama = scanner.nextLine();
-        System.out.println("Lokasi: ");
-        this.lokasi = scanner.nextLine();
-        System.out.println("Deskripsi: ");
-        this.deskripsi = scanner.nextLine();
-        System.out.println("Target Pendanaan: ");
-        this.targetPendanaan = scanner.nextInt();
-        System.out.println("Jumlah Volunteer");
-        this.targetVolunteer = scanner.nextInt();
-    }
-    
-    public Kampanye(UUID uuid, String nama, String lokasi, String deskripsi, long targetPendanaan, long sumbangan, int jumlahVolunteer, Organisasi penyelenggara){
-        setIdKampanye(uuid);
+
+    public Kampanye(UUID idKampanye, String nama, String deskripsi, int targetVolunteer, String lokasi, long targetPendanaan, Date tanggalPenanaman, String jenisPohon, Date batasDonasi, byte[] dataGambar, Organisasi penyelenggara) {
+        this.idKampanye = idKampanye;
         this.nama = nama;
-        this.lokasi = lokasi;
         this.deskripsi = deskripsi;
-        this.targetPendanaan = targetPendanaan;
-        this.sumbangan = sumbangan;
-        this.targetVolunteer = jumlahVolunteer;
-        this.penyelenggara = penyelenggara;
-    }
-    
-    public Kampanye(UUID uuid, String nama, String lokasi, String deskripsi, long targetPendanaan, int jumlahVolunteer, Organisasi penyelenggara){
-        setIdKampanye(uuid);
-        this.nama = nama;
+        this.targetVolunteer = targetVolunteer;
         this.lokasi = lokasi;
-        this.deskripsi = deskripsi;
         this.targetPendanaan = targetPendanaan;
-        this.targetVolunteer = jumlahVolunteer;
-        this.penyelenggara = penyelenggara;
-    }
-    
-    public Kampanye(String nama, String lokasi, String deskripsi, long targetPendanaan, int jumlahVolunteer, Organisasi penyelenggara){
-        UUID uuid = UUID.randomUUID();
-        setIdKampanye(uuid);
-        this.nama = nama;
-        this.lokasi = lokasi;
-        this.deskripsi = deskripsi;
-        this.targetPendanaan = targetPendanaan;
-        this.targetVolunteer = jumlahVolunteer;
+        this.tanggalPenanaman = tanggalPenanaman;
+        this.jenisPohon = jenisPohon;
+        this.batasDonasi = batasDonasi;
+        this.dataGambar = dataGambar;
         this.penyelenggara = penyelenggara;
     }
 
-    public Kampanye(String nama, String deskripsi, int jumlahVolunteer, String lokasi, long targetPendanaan) {
+    public Kampanye(String nama, String deskripsi, int targetVolunteer, String lokasi, long targetPendanaan, Date tanggalPenanaman, String jenisPohon, Date batasDonasi, byte[] dataGambar, Organisasi penyelenggara) {
         UUID uuid = UUID.randomUUID();
         setIdKampanye(uuid);
         this.nama = nama;
         this.deskripsi = deskripsi;
-        this.targetVolunteer = jumlahVolunteer;
+        this.targetVolunteer = targetVolunteer;
         this.lokasi = lokasi;
         this.targetPendanaan = targetPendanaan;
-        this.sumbangan = sumbangan;
+        this.tanggalPenanaman = tanggalPenanaman;
+        this.jenisPohon = jenisPohon;
+        this.batasDonasi = batasDonasi;
+        this.dataGambar = dataGambar;
+        this.penyelenggara = penyelenggara;
     }
     
     private UUID setIdKampanye(UUID idKampanye){
@@ -132,6 +107,63 @@ public class Kampanye {
     public void setSumbangan(long sumbangan){
         this.sumbangan = sumbangan;
     }
+
+    public Date getTanggalPenanaman() {
+        return tanggalPenanaman;
+    }
+
+    public void setTanggalPenanaman(Date tanggalPenanaman) {
+        this.tanggalPenanaman = tanggalPenanaman;
+    }
+
+    public String getJenisPohon() {
+        return jenisPohon;
+    }
+
+    public void setJenisPohon(String jenisPohon) {
+        this.jenisPohon = jenisPohon;
+    }
+
+    public Date getBatasDonasi() {
+        return batasDonasi;
+    }
+
+    public void setBatasDonasi(Date batasDonasi) {
+        this.batasDonasi = batasDonasi;
+    }
+
+    public byte[] getDataGambar() {
+        return dataGambar;
+    }
+
+    public void setDataGambar(byte[] dataGambar) {
+        this.dataGambar = dataGambar;
+    }
+
+    public void setVolunteer(ArrayList<Personal> volunteer) {
+        this.volunteer = volunteer;
+    }
+
+    public void setTargetVolunteer(int targetVolunteer) {
+        this.targetVolunteer = targetVolunteer;
+    }
+
+    public void setNama(String nama) {
+        this.nama = nama;
+    }
+
+    public void setTargetPendanaan(long targetPendanaan) {
+        this.targetPendanaan = targetPendanaan;
+    }
+
+    public void setLokasi(String lokasi) {
+        this.lokasi = lokasi;
+    }
+    
+    public int getJmlVolunteer(){
+        return this.volunteer.size();
+    }
+    
     @Override
     public String toString(){
         return "Id Kampanye: "+getIdKampanye()+

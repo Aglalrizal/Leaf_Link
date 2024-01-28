@@ -3,7 +3,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
@@ -100,21 +99,6 @@
                   <Insets bottom="10.0" left="50.0" top="10.0" />
                </HBox.margin>
             </ImageView>
-            <Label fx:id="button_tentangKami" prefHeight="16.0" prefWidth="90.0" style="-fx-font-family: Gill Sans MT; -fx-font-size: 14;" text="Tentang Kami">
-               <HBox.margin>
-                  <Insets bottom="15.0" left="150.0" right="50.0" top="27.0" />
-               </HBox.margin>
-            </Label>
-            <Label fx:id="button_artikel" prefHeight="21.0" prefWidth="44.0" style="-fx-font-family: Gill Sans MT; -fx-font-size: 14;" text="Artikel">
-               <HBox.margin>
-                  <Insets bottom="15.0" left="65.0" right="20.0" top="27.0" />
-               </HBox.margin>
-            </Label>
-            <Label fx:id="button_kampanye" prefHeight="9.0" prefWidth="66.0" style="-fx-font-family: Gill Sans MT; -fx-font-size: 14;" text="Kampanye">
-               <HBox.margin>
-                  <Insets bottom="15.0" left="100.0" top="27.0" />
-               </HBox.margin>
-            </Label>
          </children>
       </HBox>
       <HBox layoutX="-4.0" layoutY="630.0" prefHeight="47.0" prefWidth="1287.0" style="-fx-background-color: #385f1c;">
@@ -188,11 +172,6 @@
             <Text fill="WHITE" layoutX="516.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 15; -fx-font-family: Gill Sans MT;" text="Deskripsi" />
             <Text fill="WHITE" layoutX="511.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 15; -fx-font-family: Gill Sans MT;" text="Nomor Telepon" />
             <Text fill="WHITE" layoutX="43.0" layoutY="237.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 15; -fx-font-family: Gill Sans MT;" text="Alamat" />
-            <Button fx:id="buttonProfil_ubah" layoutX="39.0" layoutY="431.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="438.0" style="-fx-background-radius: 10; -fx-background-color: #19a914;" text="Ubah" textAlignment="CENTER" textFill="WHITE">
-               <font>
-                  <Font name="Gill Sans MT Bold" size="18.0" />
-               </font>
-            </Button>
             <TextField fx:id="profil_nama" editable="false" layoutX="40.0" layoutY="162.0" prefHeight="47.0" prefWidth="438.0" style="-fx-background-color: EDF2F7; -fx-background-radius: 10; -fx-border-width: 0;">
                <padding>
                   <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
@@ -222,7 +201,7 @@
                   <Font size="15.0" />
                </font>
             </TextArea>
-            <TextArea fx:id="alamatBox" editable="false" layoutX="42.0" layoutY="247.0" prefHeight="161.0" prefWidth="438.0" style="-fx-background-color: EDF2F7;" wrapText="true">
+            <TextArea fx:id="alamatBox" editable="false" layoutX="42.0" layoutY="247.0" prefHeight="225.0" prefWidth="438.0" style="-fx-background-color: EDF2F7;" wrapText="true">
                <font>
                   <Font size="15.0" />
                </font>

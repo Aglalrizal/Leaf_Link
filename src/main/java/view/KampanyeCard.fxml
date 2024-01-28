@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="387.0" prefWidth="255.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.KampanyeCardController">
+   <children>
+      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="385.0" prefWidth="250.0" style="-fx-background-color: E8FFEE; -fx-background-radius: 30;">
+         <children>
+            <ImageView fx:id="imgView" fitHeight="237.0" fitWidth="260.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/frame1.png" />
+               </image>
+            </ImageView>
+            <HBox prefHeight="69.0" prefWidth="248.0">
+               <children>
+                  <Text fx:id="txtJudul" strokeType="OUTSIDE" strokeWidth="0.0" text="Sulawesi Hijau: Tanam Pohon untuk Masa Depan yang Lestari" wrappingWidth="218.69140625">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="15.0" right="15.0" top="10.0" />
+                     </HBox.margin>
+                  </Text>
+               </children>
+            </HBox>
+            <HBox prefHeight="28.0" prefWidth="261.0">
+               <children>
+                  <Text fx:id="txtOwner" fill="#385f1c" strokeType="OUTSIDE" strokeWidth="0.0" text="Penyelenggara: Jejak Hijau" wrappingWidth="240.69140625">
+                     <font>
+                        <Font name="Gill Sans MT" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="15.0" right="10.0" />
+                     </HBox.margin>
+                  </Text>
+               </children>
+            </HBox>
+            <HBox prefHeight="18.0" prefWidth="261.0">
+               <children>
+                  <Text fx:id="txtJmlHari" fill="#385f1c" strokeType="OUTSIDE" strokeWidth="0.0" text="71 Hari lagi!" wrappingWidth="240.69140625">
+                     <font>
+                        <Font name="Gill Sans MT Bold" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="15.0" right="10.0" />
+                     </HBox.margin>
+                  </Text>
+               </children>
+            </HBox>
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+         <HBox.margin>
+            <Insets left="3.0" />
+         </HBox.margin>
+      </VBox>
+   </children>
+</HBox>

@@ -32,14 +32,12 @@ public class ArtikelDAO {
             query = "INSERT INTO Artikel (idArtikel, judul, isi, idUser, image) VALUES (?, ?, ?, ?, ?)";
             PreparedStatement st = con.prepareStatement(query);
 
-            // Menyetel nilai parameter pada PreparedStatement
             st.setString(1, artikel.getIdArtikel().toString());
             st.setString(2, artikel.getJudul());
             st.setString(3, artikel.getIsi());
             st.setString(4, organisasi.getIdUser().toString());
             st.setBytes(5, artikel.getDataGambar());
 
-        // Eksekusi pernyataan PreparedStatement
             st.executeUpdate();
             System.out.println("Berhasil menambahkan Artikel!");
         }catch(SQLException ex){
@@ -101,5 +99,42 @@ public class ArtikelDAO {
         return all;
     }
     
+    public static Artikel getLatest(){
+        ArrayList<Artikel> all = ArtikelDAO.getAll();
+        return all.getFirst();
+    }
+    
+    public static void deleteArtikel(Artikel a){
+        try {
+            con = BaseDAO.getCon(); 
+            String query = "delete from artikel"
+                    + " where idArtikel like '%s'";
+            query = String.format(query, a.getIdArtikel().toString());
+            stmt = con.prepareStatement(query);
+            stmt.executeUpdate(query);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            BaseDAO.closeCon(con);
+        }
+    }
+    
+    public static void updateArtikel(String judul, String isi, Artikel old){
+        try {
+            con = BaseDAO.getCon();
+            String query = "update artikel set judul = '%s', isi = '%s' "
+                    + "where idArtikel = '%s'";
+            query = String.format(query, 
+                    judul,
+                    isi,
+                    old.getIdArtikel().toString());
+            stmt = con.prepareStatement(query);
+            stmt.executeUpdate(query);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            BaseDAO.closeCon(con);
+        }
+    }
     //pr get 1 data and delete artikel
 }

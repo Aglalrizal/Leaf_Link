@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" fx:id="page_Donasi" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: E8FFEE;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DonasiController">
+   <children>
+      <Pane layoutX="300.0" layoutY="171.0" prefHeight="412.0" prefWidth="738.0" style="-fx-background-color: white; -fx-background-radius: 10;" AnchorPane.bottomAnchor="195.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="160.0">
+         <children>
+            <Text fill="#44ae55" layoutX="62.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 15; -fx-font-family: Gill Sans MT;" text="Nominal Donasi" />
+            <Button fx:id="button_kirimDonasi" layoutX="299.0" layoutY="338.0" mnemonicParsing="false" onAction="#kirimDonasi" prefHeight="41.0" prefWidth="150.0" style="-fx-border-radius: 10; -fx-border-color: #385F1C; -fx-background-color: transparant;" text="Kirim" textAlignment="CENTER" textFill="#385f1c">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <TextField fx:id="nominalDonasi" layoutX="58.0" layoutY="70.0" onAction="#nominalDonasi" prefHeight="47.0" prefWidth="608.0" style="-fx-background-color: EDF2F7; -fx-background-radius: 15; -fx-border-width: 0;" text="  Masukan Nominal Donasi Anda!">
+               <padding>
+                  <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
+               </padding>
+            </TextField>
+            <Text fill="#44ae55" layoutX="62.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 15; -fx-font-family: Gill Sans MT;" text="Atau, Pilih Nominasi" />
+            <ImageView fx:id="img_uang300" fitHeight="130.0" fitWidth="110.0" layoutX="557.0" layoutY="187.0" onMouseClicked="#add300" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/Uang300.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="img_uang200" fitHeight="130.0" fitWidth="110.0" layoutX="431.0" layoutY="187.0" onMouseClicked="#add200" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/Uang200.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="img_uang100" fitHeight="130.0" fitWidth="110.0" layoutX="306.0" layoutY="187.0" onMouseClicked="#add100" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/Uang100.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="img_uang50" fitHeight="130.0" fitWidth="110.0" layoutX="184.0" layoutY="187.0" onMouseClicked="#add50" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/Uang50.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="img_uang20" fitHeight="130.0" fitWidth="110.0" layoutX="62.0" layoutY="186.0" onMouseClicked="#add20" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/Uang20.png" />
+               </image>
+            </ImageView>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </Pane>
+      <HBox id="header" fx:id="header" layoutY="-1.0" prefHeight="71.0" prefWidth="1323.0" style="-fx-background-color: E8FFEE;" styleClass="bayangan">
+         <effect>
+            <DropShadow height="60.0" radius="14.5" width="0.0" />
+         </effect>
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+         <children>
+            <ImageView fitHeight="60.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/logo1.png" />
+               </image>
+               <HBox.margin>
+                  <Insets bottom="10.0" left="50.0" top="10.0" />
+               </HBox.margin>
+            </ImageView>
+         </children>
+      </HBox>
+      <HBox layoutY="666.0" prefHeight="101.0" prefWidth="1323.0" style="-fx-background-color: #385f1c;">
+         <children>
+            <ImageView fitHeight="60.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/logo1.png" />
+               </image>
+               <HBox.margin>
+                  <Insets bottom="10.0" left="50.0" top="10.0" />
+               </HBox.margin>
+            </ImageView>
+            <Text fx:id="contactUs" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold; -fx-font-size: 17;" text="Hubungi Kami :">
+               <HBox.margin>
+                  <Insets bottom="20.0" left="180.0" top="23.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <ImageView fx:id="fb" fitHeight="25.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/fb.png" />
+               </image>
+               <HBox.margin>
+                  <Insets bottom="20.0" left="130.0" top="23.0" />
+               </HBox.margin>
+            </ImageView>
+            <ImageView fx:id="ig" fitHeight="25.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/ig.png" />
+               </image>
+               <HBox.margin>
+                  <Insets bottom="20.0" left="15.0" top="23.0" />
+               </HBox.margin>
+            </ImageView>
+            <ImageView fx:id="tw" fitHeight="25.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/tw.png" />
+               </image>
+               <HBox.margin>
+                  <Insets bottom="20.0" left="15.0" top="23.0" />
+               </HBox.margin>
+            </ImageView>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="© 2023 Leaf Link, All Rights Reserved.">
+               <font>
+                  <Font size="10.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="310.0" right="50.0" top="26.0" />
+               </HBox.margin>
+            </Text>
+         </children>
+         <padding>
+            <Insets bottom="11.0" left="14.0" top="11.0" />
+         </padding>
+      </HBox>
+      <ImageView fx:id="tombol_back" fitHeight="49.0" fitWidth="51.0" layoutX="64.0" layoutY="111.0" onMouseClicked="#back" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/back.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

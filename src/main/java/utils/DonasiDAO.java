@@ -46,7 +46,7 @@ public class DonasiDAO {
         }
     }
     
-       public static long totalDonasi(Kampanye k){
+    public static long totalDonasi(Kampanye k){
         long total = 0;
         try{
             con = BaseDAO.getCon();
@@ -83,7 +83,7 @@ public class DonasiDAO {
             stmt = con.prepareStatement(query);
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
-                Donasi a = new Donasi(UUID.fromString(rs.getString("idDonasi")),
+                Donasi a = new Donasi(UUID.fromString(rs.getString("idSumbangan")),
                             KampanyeDAO.getKampanyeById(rs.getString("idKampanye")),
                             PersonalDAO.searchByUid(rs.getString("idUser")),
                             rs.getLong("jml_sumbangan"));
@@ -101,13 +101,13 @@ public class DonasiDAO {
         ArrayList<Donasi> all = new ArrayList<>();
         try {
             con = BaseDAO.getCon();
-            String query = "select * from sumbangan ";
+            String query = "select * from sumbangan";
 
             query = String.format(query);
             stmt = con.prepareStatement(query);
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
-                Donasi a = new Donasi(UUID.fromString(rs.getString("idDonasi")),
+                Donasi a = new Donasi(UUID.fromString(rs.getString("idSumbangan")),
                             KampanyeDAO.getKampanyeById(rs.getString("idKampanye")),
                             PersonalDAO.searchByUid(rs.getString("idUser")),
                             rs.getLong("jml_sumbangan"));
@@ -119,5 +119,30 @@ public class DonasiDAO {
             BaseDAO.closeCon(con);
         }
         return all;
+    }
+    
+    public static long totalDonasiAll(){
+        long total = 0;
+        try{
+            con = BaseDAO.getCon();
+            String query = "select count(*) from sumbangan";
+            
+            stmt = con.prepareStatement(query);
+            ResultSet rs = stmt.executeQuery(query);
+            if (rs.next()) {
+                query = "SELECT SUM(jml_sumbangan) FROM sumbangan";
+                query = String.format(query);
+                stmt = con.prepareStatement(query);
+                ResultSet sumResult = stmt.executeQuery(query);
+                if(sumResult.next()){
+                    total = sumResult.getLong("SUM(jml_sumbangan)");
+                }
+            }
+        }catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            BaseDAO.closeCon(con);
+        }
+        return total;
     }
 }

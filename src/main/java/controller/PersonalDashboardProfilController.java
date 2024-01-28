@@ -94,10 +94,11 @@ public class PersonalDashboardProfilController implements Initializable {
     @FXML
     private ImageView tw;
     @FXML
-    
-    private HBox butttonProfil;
-    @FXML
     private HBox riwayatVolunteer;
+    @FXML
+    private HBox buttonProfil;
+    @FXML
+    private HBox riwayatDonasi;
 
     /**
      * Initializes the controller class.
@@ -161,9 +162,37 @@ public class PersonalDashboardProfilController implements Initializable {
             Scene scene = new Scene(root);
             stage.setTitle("Leaf Link");
             stage.setScene(scene);
-            } catch (MalformedURLException ex) {
-                Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void goToProfil(MouseEvent event) throws IOException {
+        try {
+            Stage stage = (Stage) buttonProfil.getScene().getWindow();
+            URL url = new File("src/main/java/view/PersonalDashboardProfil.fxml").toURI().toURL();
+            Parent root = FXMLLoader.load(url);
+            Scene scene = new Scene(root);
+            stage.setTitle("Leaf Link");
+            stage.setScene(scene);
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void goToRiwayatDonasi(MouseEvent event) throws IOException {
+        try {
+            Stage stage = (Stage) riwayatDonasi.getScene().getWindow();
+            URL url = new File("src/main/java/view/PersonalDashboardRiwayatDonasi.fxml").toURI().toURL();
+            Parent root = FXMLLoader.load(url);
+            Scene scene = new Scene(root);
+            stage.setTitle("Leaf Link");
+            stage.setScene(scene);
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 }

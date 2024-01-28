@@ -4,10 +4,16 @@
  */
 package controller;
 
+import java.awt.HeadlessException;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,14 +27,21 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import model.Artikel;
+import model.Kampanye;
+import utils.ArtikelDAO;
 
 /**
  * FXML Controller class
@@ -66,16 +79,21 @@ public class OrganisasiDashboardArtikelController implements Initializable {
     @FXML
     private Button buatArtikelBtn;
     @FXML
-    private TableView<?> table;
-    @FXML
     private HBox buttonProfil;
+    @FXML
+    private TableView<Artikel> tabel;
+    @FXML
+    private Button editBtn;
+    @FXML
+    private Button deleteBtn;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        HomeController.a = null;
+        fillTable();
     }    
 
     @FXML
@@ -171,4 +189,86 @@ public class OrganisasiDashboardArtikelController implements Initializable {
         }
     }
     
+    @FXML
+    private void handleButtonEvent(ActionEvent event) throws IOException {
+        if (event.getSource() == deleteBtn) {
+            try {
+                Artikel a= tabel.getSelectionModel().getSelectedItem();
+                ArtikelDAO.deleteArtikel(a);
+                fillTable();
+            } catch (HeadlessException e) {
+                e.printStackTrace();
+            }
+
+        }
+        if (event.getSource() == editBtn) {
+            try {
+                HomeController.a =  tabel.getSelectionModel().getSelectedItem();
+                try {
+                    Stage stage = (Stage) buatArtikelBtn.getScene().getWindow();
+                    URL url = new File("src/main/java/view/OrganisasiDashboardEditArtikel.fxml").toURI().toURL();
+                    Parent root = FXMLLoader.load(url);
+                    Scene scene = new Scene(root);
+                    stage.setTitle("Leaf Link");
+                    stage.setScene(scene);
+                } catch (MalformedURLException ex) {
+                    Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } catch (HeadlessException e) {
+                e.printStackTrace();
+            }
+
+        }
+    }
+
+    
+    private void fillTable() {
+        ArrayList<Artikel> res = ArtikelDAO.getAllbyOrganisasi(MainController.o);
+        
+        tabel.getColumns().clear();
+        tabel.getItems().clear();
+        
+        tabel.setRowFactory(tv -> {
+        TableRow<Artikel> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (!row.isEmpty() && event.getButton() == MouseButton.PRIMARY && event.getClickCount() == 2) {
+                    Artikel rowData = row.getItem();
+                    try {
+                        Stage stage = (Stage) tabel.getScene().getWindow();
+                        URL url = new File("src/main/java/view/ShowArtikelDashboard.fxml").toURI().toURL();
+                        FXMLLoader loader = new FXMLLoader(url);
+                        Parent root = loader.load();
+                        ShowArtikelController controller = loader.getController();
+                        controller.setData(rowData);
+                        Scene scene = new Scene(root);
+                        stage.setScene(scene);
+                        //stage.show();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+            return row;
+        });
+        
+        TableColumn<Artikel, String> no = new TableColumn<>("#");
+        no.setCellValueFactory(cellData -> {
+            Integer indexValue = tabel.getItems().indexOf(cellData.getValue()) + 1;
+            return new javafx.beans.property.SimpleStringProperty(indexValue.toString());
+        });
+        TableColumn<Artikel, String> cl1 = new TableColumn<>("Judul Artikel");
+        cl1.setCellValueFactory(new PropertyValueFactory<>("judul"));
+        
+        no.setPrefWidth(50);
+        cl1.setPrefWidth(650);
+        tabel.getColumns().add(no);
+        tabel.getColumns().add(cl1);
+        
+
+        // Add data to table
+        for (Artikel a : res) {
+            tabel.getItems().add(a);
+        }
+    }
+
 }

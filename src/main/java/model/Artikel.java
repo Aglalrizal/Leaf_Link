@@ -26,6 +26,14 @@ public class Artikel {
         this.dataGambar = dataGambar;
     }
 
+    public Artikel(String judul, String isi, Organisasi author) {
+        this.judul = judul;
+        this.isi = isi;
+        this.author = author;
+    }
+
+    
+    
     public Artikel(String judul, String isi, Organisasi author, byte[] dataGambar) {
         UUID uuid = UUID.randomUUID();
         setIdArtikel(uuid);
